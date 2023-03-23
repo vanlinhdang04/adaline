@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://zenone.com.vn
+
+# Sitemaps
+Sitemap: https://zenone.com.vn/sitemap.xml

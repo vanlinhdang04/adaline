@@ -1,0 +1,162 @@
+/* @font-face {
+	font-family: San Francisco Display;
+	src: url("/fonts/SF/SanFranciscoDisplay-Regular.otf") format("opentype");
+	font-weight: 400;
+}
+@font-face {
+	font-family: San Francisco Display;
+	src: url("/fonts/SF/SanFranciscoDisplay-Medium.otf") format("opentype");
+	font-weight: 500;
+}
+@font-face {
+	font-family: San Francisco Display;
+	src: url("/fonts/SF/SanFranciscoDisplay-Semibold.otf") format("opentype");
+	font-weight: 600;
+}
+@font-face {
+	font-family: San Francisco Display;
+	src: url("/fonts/SF/SanFranciscoDisplay-Bold.otf") format("opentype");
+	font-weight: 700;
+}
+@font-face {
+	font-family: San Francisco Display;
+	src: url("/fonts/SF/SanFranciscoDisplay-Heavy.otf") format("opentype");
+	font-weight: 800;
+} */
+
+:root {
+  --color-primary: #1498d5;
+}
+
+*,
+html,
+body {
+  font-family: "Roboto" !important;
+}
+body {
+  overflow-x: hidden;
+}
+
+#news-slider .slick-list {
+  /* overflow: inherit; */
+  padding: 0 0 40px;
+}
+#news-slider .slick-dots li button:before {
+  content: "";
+  display: none;
+}
+#news-slider .slick-dots {
+  bottom: 0px;
+}
+#news-slider .slick-dots li {
+  margin: 0 2px;
+  width: 10px;
+  height: 10px;
+  transition: 0.3s;
+}
+#news-slider .slick-dots li button {
+  color: #6ed7d3;
+  background-color: #6ed7d3;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  transition: 0.3s;
+}
+#news-slider li.slick-active {
+  width: 20px;
+  height: 10px;
+}
+#news-slider li.slick-active button {
+  width: 20px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #1c655e;
+}
+
+@keyframes slideUpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Content news */
+/* .content {
+	color: #001529;
+	font-family: "Roboto" !important;
+}
+.content h1,
+h2,
+h3,
+h4 {
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 24px;
+	margin-bottom: 24px;
+}
+.content p {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	margin-bottom: 24px;
+}
+.content img {
+	margin: 0 auto;
+	border-radius: 28px;
+	object-fit: cover;
+}
+@media screen and (max-width: 992px) {
+	.content img {
+		width: auto;
+		height: auto;
+	}
+}
+
+.content p br {
+	display: none;
+}
+.content p:has(br) {
+}
+.content ol,
+.content ul {
+	padding-inline-start: 0 !important;
+	margin-left: 36px;
+}
+.content li {
+	font-size: 16px;
+	margin-bottom: 16px;
+} */
+/* -------------------------------------------------------------------------------- */
+.highlighted-product-slider {
+  padding-right: -31px;
+}
+
+.highlighted-product-slider .slick-track {
+  display: flex !important;
+}
+
+.highlighted-product-slider .slick-slide {
+  height: inherit !important;
+}
+.highlighted-product-slider .slick-slide > div {
+  height: 100% !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .highlighted-product-slider {
+    margin-right: -31px;
+  }
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.home-banner-animation {
+  transform: translate3d(0px, 0px, 0px) scale(1.35) !important;
+}

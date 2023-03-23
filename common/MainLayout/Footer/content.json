@@ -1,0 +1,43 @@
+{
+  "vi": {
+    "subscribe": {
+      "title": "Bắt kịp xu hướng",
+      "text": "Đăng ký bản tin để là người đầu tiên biết về các sản phẩm mới, chương trình khuyến mãi đặc biệt và<br/>ưu đãi trực tuyến độc quyền của chúng.",
+      "button": "Đăng ký",
+      "placeholder": "Đăng ký nhận bản tin"
+    },
+    "menu": {
+      "parent": "MUA SẮM NÀO",
+      "child": [
+        {
+          "label": "Tài khoản của tôi",
+          "href": "/tai-khoan"
+        },
+        {
+          "label": "Chính sách Giao Hàng",
+          "href": "/chinh-sach"
+        },
+        {
+          "label": "Chính sách Bảo hành & Đổi trả",
+          "href": "/chinh-sach"
+        },
+        {
+          "label": "Khuyến mãi",
+          "href": "/khuyen-mai"
+        },
+        {
+          "label": "Bảng quy đổi kích thước",
+          "href": "/chinh-sach"
+        }
+      ]
+    }
+  },
+  "en": {
+    "subscribe": {
+      "title": "KEEP UP WITH THE TREND",
+      "text": "Subscribe to our newsletter and be the first to hear about our new arrivals, special promotions and<br/>online exclusives.",
+      "button": "Subscribe",
+      "placeholder": "Sign up for our newsletter"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+.webview {
+	font-family: "Roboto" !important;
+}
+
+.webview span {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.webview span {
+	width: 100% !important;
+	height: 100% !important;
+}
+.webview img {
+	/* width: 100% !important;
+	height: 100% !important; */
+	object-fit: contain;
+	margin: 24px auto;
+	display: block;
+	border-radius: 13px;
+}
+@media screen and (max-width: 992px) {
+	.webview img {
+		width: auto;
+		height: auto;
+	}
+}
+
+.webview ol,
+.webview ul {
+	padding-inline-start: 0 !important;
+	font-size: 15px;
+	/* list-style-type: none; */
+}
+
+.webview p {
+	margin-bottom: 10px;
+	font-size: 15px;
+	line-height: 24px;
+	text-align: left;
+}
+.webview div {
+	margin-bottom: 10px;
+	font-size: 15px;
+	text-align: left;
+}
+.webview p br {
+	display: none;
+}
+.webview p:has(br) {
+	/* display: none; */
+}
+
+/* .webview h1,
+.webview h2,
+.webview h3,
+.webview h4 {
+	margin-bottom: 8px;
+	margin-top: 15px;
+} */
+
+/* .webview h1,
+.webview h2,
+.webview h3,
+.webview h4,
+.webview h5,
+.webview h6 {
+	font-size: 20px;
+	margin-top: 24px;
+} */
+
+.webview h1,
+.webview h2 {
+	font-size: 20px;
+	margin: 24px 0;
+}
+.webview h3 {
+	font-size: 18px;
+	margin: 20px 0;
+}
+.webview h4 {
+	font-size: 16px;
+	margin: 16px 0;
+}
+
+.webview ol,
+.webview ul {
+	/* margin-left: 36px; */
+}
+
+.webview li {
+	margin-left: 24px;
+	margin-bottom: 4px;
+}
+
+/* Bai viet */
+/* .guide */
+.guide h1,
+.guide h2,
+.guide h3,
+.guide h4,
+.guide h5,
+.guide h6 {
+	/* font-size: 24px; */
+	font-weight: 500;
+	line-height: 24px;
+}
+
+.guide h1,
+.guide h2 {
+	font-size: 20px;
+}
+.guide h3 {
+	font-size: 18px;
+}
+.guide h4 {
+	font-size: 16px;
+}
+
+.webview table {
+	border: 1px solid #606060;
+	width: 100%;
+	border-collapse: collapse;
+}
+.webview td {
+	border: 1px solid #606060;
+	font-size: 15px;
+	line-height: 24px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.webview div br {
+	display: none;
+}
