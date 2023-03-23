@@ -159,11 +159,7 @@ export default function HomeVideo({ data }) {
 				<iframe
 					width="100%"
 					height="100%"
-					// src="https://www.youtube.com/embed/YAwzP0abbUQ?rel=0&amp;autoplay=1"
-					src={
-						data?.summary ||
-						"https://www.youtube.com/embed/YAwzP0abbUQ?rel=0&amp;autoplay=1"
-					}
+					src={"https://www.youtube.com/embed/mY6ChWGOhTc?rel=0&amp;autoplay=1"}
 					frameBorder="0"
 					title=""
 					allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -37,7 +37,7 @@ export default function Form({
   isFooter = true,
   id = "",
   slug = "",
-  title = "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho ZenOne",
+  title = "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho Adaline",
   showIcon = true,
   titleColor = "#ffffff",
   isFullInput = false,
@@ -49,9 +49,9 @@ export default function Form({
   const [open, setOpen] = React.useState(false);
   const { locale } = useRouter();
   locale == "vi"
-    ? (title = "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho ZenOne")
+    ? (title = "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho Adaline")
     : (title =
-        "If you are interested in this product, please leave a message for ZenOne");
+        "If you are interested in this product, please leave a message for Adaline");
   const handleClose = () => {
     sessionStorage.setItem("popup_expiry", "close");
     setOpen(false);
@@ -89,7 +89,7 @@ export default function Form({
       setOpen(true);
       // appAlert({
       //   type: "success",
-      //   message: "Gửi thông tin thành công. ZenOne sẽ liên hệ bạn trong 24h",
+      //   message: "Gửi thông tin thành công. Adaline sẽ liên hệ bạn trong 24h",
       // });
       form.reset();
     },
@@ -321,8 +321,8 @@ export default function Form({
             </Text>
             <Text size={"lg"} weight={400} color={"#001529"} align="center">
               {locale == "vi"
-                ? "ZenOne sẽ liên hệ bạn trong 24h"
-                : "ZenOne will contact you within 24 hours"}
+                ? "Adaline sẽ liên hệ bạn trong 24h"
+                : "Adaline will contact you within 24 hours"}
             </Text>
           </Box>
         </Box>

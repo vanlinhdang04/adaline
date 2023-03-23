@@ -139,13 +139,13 @@ export default function Header() {
         },
         sanPham: {
           label: "Sản Phẩm",
-          child: ["Bất động sản", "Cổ phần ZenOne", "Cổ phần Startups"],
+          // child: ["Bất động sản", "Cổ phần ZenOne", "Cổ phần Startups"],
         },
         tinTuc: {
           label: "Tin tức",
-          child: ["Tin ZenOne", "Ưu đãi & Khuyến mãi"],
+          // child: ["Tin ZenOne", "Ưu đãi & Khuyến mãi"],
         },
-        veZenOne: {
+        veAdaline: {
           label: "Về Adaline",
         },
         huongDanSuDung: {
@@ -166,13 +166,13 @@ export default function Header() {
         },
         sanPham: {
           label: "Products",
-          child: ["Real estate", "ZenOne Shares", "Startups Shares"],
+          // child: ["Real estate", "Adaline Shares", "Startups Shares"],
         },
         tinTuc: {
           label: "News",
-          child: ["News ZenOne", "Offers & Promotions"],
+          // child: ["News Adaline", "Offers & Promotions"],
         },
-        veZenOne: {
+        veAdaline: {
           label: "About Adaline",
         },
         huongDanSuDung: {
@@ -199,17 +199,17 @@ export default function Header() {
             <div className={classes.sideLeft}>
               <Link href={"/"} passHref>
                 <a>
-                  <div style={{ display: "flex", alignItems: "center" }}>
+                  <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
                     <Image
                       src={logo}
-                      alt="ZenOne"
+                      alt="Adaline"
                       priority
                       height={56}
                       width={63}
                       layout="intrinsic"
                     />
-                    <h2 style={{ color: "#1498d5" }}>ADALINE</h2>
-                  </div>
+                    <h2 style={{ color: "var(--color-primary)" }}>ADALINE</h2>
+                  </Box>
                 </a>
               </Link>
             </div>
@@ -220,7 +220,17 @@ export default function Header() {
                     {label?.[locale]?.menu?.home?.label}
                   </Link>
                 </li>
-                <Popover shadow="md" radius={24}>
+                <li className={classes.menuItem}>
+                  <Link href="/san-pham">
+                    {label?.[locale]?.menu?.sanPham?.label}
+                  </Link>
+                </li>
+                <li className={classes.menuItem}>
+                  <Link href="/tin-tuc">
+                    {label?.[locale]?.menu?.tinTuc?.label}
+                  </Link>
+                </li>
+                {/* <Popover shadow="md" radius={24}>
                   <Popover.Target>
                     <li className={classes.menuItem}>
                       <Group align={"center"} spacing={4}>
@@ -234,7 +244,6 @@ export default function Header() {
                           />
                         </div>
                       </Group>
-                      {/* </Link> */}
                     </li>
                   </Popover.Target>
                   <Popover.Dropdown p={0}>
@@ -249,19 +258,17 @@ export default function Header() {
                           <Link href={"#"}>
                             {label?.[locale]?.menu?.sanPham?.child[1]}
                           </Link>
-                          {/* <Badge ml={16}>Sắp ra mắt</Badge> */}
                         </div>
                         <div className={classes.menuItemSub}>
                           <Link href={"#"}>
                             {label?.[locale]?.menu?.sanPham?.child[2]}
                           </Link>
-                          {/* <Badge ml={16}>Sắp ra mắt</Badge> */}
                         </div>
                       </div>
                     </HoverMenu>
                   </Popover.Dropdown>
-                </Popover>
-                <Popover shadow="md" radius={24}>
+                </Popover> */}
+                {/* <Popover shadow="md" radius={24}>
                   <Popover.Target>
                     <li className={classes.menuItem}>
                       <Group align={"center"} spacing={4}>
@@ -275,7 +282,6 @@ export default function Header() {
                           />
                         </div>
                       </Group>
-                      {/* </Link> */}
                     </li>
                   </Popover.Target>
                   <Popover.Dropdown p={0}>
@@ -294,11 +300,11 @@ export default function Header() {
                       </div>
                     </HoverMenu>
                   </Popover.Dropdown>
-                </Popover>
+                </Popover> */}
 
                 <li className={classes.menuItem}>
                   <Link href="/gioi-thieu">
-                    {label?.[locale]?.menu?.veZenOne?.label}
+                    {label?.[locale]?.menu?.veAdaline?.label}
                   </Link>
                 </li>
                 <li className={classes.menuItem}>
@@ -422,15 +428,18 @@ export default function Header() {
           </div>
           <Link href={"/"} passHref>
             <a>
-              <Image
-                src={logo}
-                alt="ZenOne"
-                priority
-                width={77}
-                height={34}
-                objectFit="cover"
-                layout="intrinsic"
-              />
+              <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
+                <Image
+                  src={logo}
+                  alt="Adaline"
+                  priority
+                  width={34}
+                  height={30}
+                  objectFit="cover"
+                  layout="intrinsic"
+                />
+                <h3 style={{ color: "var(--color-primary)" }}>ADALINE</h3>
+              </Box>
             </a>
           </Link>
 
@@ -450,38 +459,35 @@ export default function Header() {
       >
         <div className={classes.drawer}>
           <Link href={"/"}>
-            <div>
+            <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
               <Image
                 src={logo}
-                alt="ZenOne"
-                width={127}
+                alt="Adaline"
+                width={64}
                 height={56}
                 //placeholder="blur"
               />
-            </div>
+              <h3 style={{ color: "var(--color-primary)" }}>ADALINE</h3>
+            </Box>
           </Link>
           <div className={classes.drawerItem}>
             <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.label}</Link>
-            <div className={classes.drawerItemSub}>
+            {/* <div className={classes.drawerItemSub}>
               <Link href={"/san-pham/bat-dong-san"}>
                 {label?.[locale]?.menu?.sanPham?.child[0]}
               </Link>
             </div>
             <div className={classes.drawerItemSub}>
-              {/* <Link href={"/san-pham/co-phan-zenone"}>Cổ phần ZenOne</Link> */}
               <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.child[1]}</Link>
-              {/* <Badge ml={8}>Sắp ra mắt</Badge> */}
             </div>
             <div className={classes.drawerItemSub}>
               <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.child[2]}</Link>
-              {/* <Link href={"/san-pham/co-phan-startups"}>Cổ phần Startups</Link> */}
-              {/* <Badge ml={8}>Sắp ra mắt</Badge> */}
-            </div>
+            </div> */}
           </div>
           {/*  */}
           <div className={classes.drawerItem}>
             <Link href={"#"}>{label?.[locale]?.menu?.tinTuc?.label}</Link>
-            <div className={classes.drawerItemSub}>
+            {/* <div className={classes.drawerItemSub}>
               <Link href={"/tin-tuc/tin-zenone"}>
                 {label?.[locale]?.menu?.tinTuc?.child[0]}
               </Link>
@@ -490,12 +496,12 @@ export default function Header() {
               <Link href={"/tin-tuc/tin-uu-dai"}>
                 {label?.[locale]?.menu?.tinTuc?.child[1]}
               </Link>
-            </div>
+            </div> */}
           </div>
           {/*  */}
           <div className={classes.drawerItem}>
             <Link href={"/gioi-thieu"}>
-              {label?.[locale]?.menu?.veZenOne?.label}
+              {label?.[locale]?.menu?.veAdaline?.label}
             </Link>
           </div>
           <div className={classes.drawerItem}>
@@ -542,7 +548,7 @@ export default function Header() {
               </Text>
             </Box>
           </Box>
-          {process.env.NODE_ENV === "development" && (
+          {/* {process.env.NODE_ENV === "development" && (
             <Box mt={6}>
               <SegmentedControl
                 size="xs"
@@ -566,7 +572,7 @@ export default function Header() {
                 }}
               />
             </Box>
-          )}
+          )} */}
           {/* <div className={classes.vector} onClick={() => setOpenDrawer(false)}>
 						<Image
 							src={vectorLeft}
@@ -628,29 +634,6 @@ export default function Header() {
             },
           })}
         >
-          {/* <Text
-						weight={700}
-						align="center"
-						order={2}
-						color="#001529"
-						sx={(theme) => ({
-							fontSize: 24,
-							marginBottom: 19,
-							fontWeight: "700",
-
-							// [`@media (max-width: ${theme.breakpoints.md}px)`]: {
-							// 	fontSize: 16,
-							// 	marginBottom: 7,
-							// },
-							[theme.fn.smallerThan("md")]: {
-								fontSize: 16,
-								marginBottom: 7,
-							},
-						})}
-					>
-						Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho ZenOne
-					</Text> */}
-
           <Form
             isFooter={false}
             titleColor="#001529"
