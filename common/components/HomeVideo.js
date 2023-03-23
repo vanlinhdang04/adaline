@@ -1,8 +1,3 @@
-import {
-	addtrackingEvent,
-	TRACKING_NAMES,
-	TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import sanitizeDOMData from "@/utils/sanitizeDOMData";
 import { Box, Center, Modal } from "@mantine/core";
@@ -113,10 +108,6 @@ export default function HomeVideo({ data }) {
 							})}
 							onClick={() => {
 								setOpened(true);
-								addtrackingEvent({
-									vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-									field_id: TRACKING_NAMES["TRANG_CHU_Video_play"],
-								});
 							}}
 						>
 							<Box

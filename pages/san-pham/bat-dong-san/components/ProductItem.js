@@ -1,9 +1,4 @@
 // import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
-import {
-	addtrackingEvent,
-	TRACKING_NAMES,
-	TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import { CardProduct } from "@/common/components/CardProduct";
 import { getFieldFromFieldId } from "@/utils/getFieldFromFieldId";
 import slugify from "@/utils/slugifyString";
@@ -30,42 +25,6 @@ function ProductItem({ listProduct, isFetching }) {
 			setHeight(600);
 		}
 	}, []);
-
-	// const { data: projects } = useFetchPageInfo("web/home/product-hightlight", {
-	// 	condition: { ngon_ngu: locale },
-	// });
-
-	// const { add_on_4 } = projects || {};
-
-	const handleTracking = (link) => {
-		switch (link) {
-			case "The Lake Farm Hồ Trị An":
-				return addtrackingEvent({
-					vi_tri: TRACKING_VI_TRI["DU-AN"],
-					field_id: TRACKING_NAMES.DU_AN_Duan_TLF,
-				});
-			case "Zen Group Tower":
-				return addtrackingEvent({
-					vi_tri: TRACKING_VI_TRI["DU-AN"],
-					field_id: TRACKING_NAMES.DU_AN_Duan_Zentower,
-				});
-			case "Long Sơn Resort & Condotel Bình Thuận":
-				return addtrackingEvent({
-					vi_tri: TRACKING_VI_TRI["DU-AN"],
-					field_id: TRACKING_NAMES.DU_AN_Duan_LSR,
-				});
-			case "Nhị Bình Farmstay":
-				return addtrackingEvent({
-					vi_tri: TRACKING_VI_TRI["DU-AN"],
-					field_id: TRACKING_NAMES.DU_AN_Duan_NBF,
-				});
-			default:
-				return addtrackingEvent({
-					vi_tri: TRACKING_VI_TRI["DU-AN"],
-					field_id: link || "",
-				});
-		}
-	};
 
 	const label = {
 		vi: {
@@ -103,7 +62,7 @@ function ProductItem({ listProduct, isFetching }) {
 									)}`}
 									key={index}
 								>
-									<a onClick={() => handleTracking(ten_san_pham)}>
+									<a>
 										<CardProduct data={item} />
 									</a>
 								</Link>

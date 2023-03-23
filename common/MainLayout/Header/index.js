@@ -1,9 +1,4 @@
 import { SUB_POSITION } from "@/apis/queryFunctions/subcribePosition";
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import DownloadApp from "@/common/components/DownloadApp";
 import linkChangeLocale from "@/utils/linkChangeLocale";
 import {
@@ -139,6 +134,9 @@ export default function Header() {
   const label = {
     vi: {
       menu: {
+        home: {
+          label: "Trang chủ",
+        },
         sanPham: {
           label: "Sản Phẩm",
           child: ["Bất động sản", "Cổ phần ZenOne", "Cổ phần Startups"],
@@ -148,7 +146,7 @@ export default function Header() {
           child: ["Tin ZenOne", "Ưu đãi & Khuyến mãi"],
         },
         veZenOne: {
-          label: "Về ZenOne",
+          label: "Về Adaline",
         },
         huongDanSuDung: {
           label: "Hướng dẫn sử dụng",
@@ -163,6 +161,9 @@ export default function Header() {
     },
     en: {
       menu: {
+        home: {
+          label: "Home",
+        },
         sanPham: {
           label: "Products",
           child: ["Real estate", "ZenOne Shares", "Startups Shares"],
@@ -172,7 +173,7 @@ export default function Header() {
           child: ["News ZenOne", "Offers & Promotions"],
         },
         veZenOne: {
-          label: "About ZenOne",
+          label: "About Adaline",
         },
         huongDanSuDung: {
           label: "User manual",
@@ -214,6 +215,11 @@ export default function Header() {
             </div>
             <div className={classes.sideRight}>
               <ul className={classes.menu}>
+                <li className={classes.menuItem}>
+                  <Link href="/">
+                    {label?.[locale]?.menu?.home?.label}
+                  </Link>
+                </li>
                 <Popover shadow="md" radius={24}>
                   <Popover.Target>
                     <li className={classes.menuItem}>
@@ -234,42 +240,18 @@ export default function Header() {
                   <Popover.Dropdown p={0}>
                     <HoverMenu>
                       <div>
-                        <div
-                          className={classes.menuItemSub}
-                          onClick={() => {
-                            addtrackingEvent({
-                              vi_tri: TRACKING_VI_TRI.MENU,
-                              field_id: TRACKING_NAMES.MENU_BDS,
-                            });
-                          }}
-                        >
+                        <div className={classes.menuItemSub}>
                           <Link href={"/san-pham/bat-dong-san"}>
                             {label?.[locale]?.menu?.sanPham?.child[0]}
                           </Link>
                         </div>
-                        <div
-                          className={classes.menuItemSub}
-                          onClick={() => {
-                            addtrackingEvent({
-                              vi_tri: TRACKING_VI_TRI.MENU,
-                              field_id: TRACKING_NAMES["MENU_CP-ZO"],
-                            });
-                          }}
-                        >
+                        <div className={classes.menuItemSub}>
                           <Link href={"#"}>
                             {label?.[locale]?.menu?.sanPham?.child[1]}
                           </Link>
                           {/* <Badge ml={16}>Sắp ra mắt</Badge> */}
                         </div>
-                        <div
-                          className={classes.menuItemSub}
-                          onClick={() => {
-                            addtrackingEvent({
-                              vi_tri: TRACKING_VI_TRI.MENU,
-                              field_id: TRACKING_NAMES["MENU_CP-Startups"],
-                            });
-                          }}
-                        >
+                        <div className={classes.menuItemSub}>
                           <Link href={"#"}>
                             {label?.[locale]?.menu?.sanPham?.child[2]}
                           </Link>
@@ -299,28 +281,12 @@ export default function Header() {
                   <Popover.Dropdown p={0}>
                     <HoverMenu>
                       <div>
-                        <div
-                          className={classes.menuItemSub}
-                          onClick={() => {
-                            addtrackingEvent({
-                              vi_tri: TRACKING_VI_TRI.MENU,
-                              field_id: TRACKING_NAMES["MENU_Tin-tuc-ZO"],
-                            });
-                          }}
-                        >
+                        <div className={classes.menuItemSub}>
                           <Link href={"/tin-tuc/tin-zenone"}>
                             {label?.[locale]?.menu?.tinTuc?.child[0]}
                           </Link>
                         </div>
-                        <div
-                          className={classes.menuItemSub}
-                          onClick={() => {
-                            addtrackingEvent({
-                              vi_tri: TRACKING_VI_TRI.MENU,
-                              field_id: TRACKING_NAMES["MENU_Tin-tuc-KM"],
-                            });
-                          }}
-                        >
+                        <div className={classes.menuItemSub}>
                           <Link href={"/tin-tuc/tin-uu-dai"}>
                             {label?.[locale]?.menu?.tinTuc?.child[1]}
                           </Link>
@@ -335,15 +301,7 @@ export default function Header() {
                     {label?.[locale]?.menu?.veZenOne?.label}
                   </Link>
                 </li>
-                <li
-                  className={classes.menuItem}
-                  onClick={() => {
-                    addtrackingEvent({
-                      vi_tri: TRACKING_VI_TRI.MENU,
-                      field_id: TRACKING_NAMES["MENU_Huong-dan-su-dung"],
-                    });
-                  }}
-                >
+                <li className={classes.menuItem}>
                   <Link href="/ho-tro/huong-dan-su-dung">
                     {label?.[locale]?.menu?.huongDanSuDung?.label}
                   </Link>
@@ -363,10 +321,6 @@ export default function Header() {
                     }}
                     onClick={() => {
                       setOpenSignup((e) => !e);
-                      addtrackingEvent({
-                        vi_tri: TRACKING_VI_TRI.MENU,
-                        field_id: TRACKING_NAMES["MENU_Dang-ky"],
-                      });
                     }}
                   >
                     <Box sx={{ display: "flex", marginRight: 7 }}>
@@ -400,12 +354,6 @@ export default function Header() {
                           justifyContent: "center",
                           alignItems: "center",
                         }}
-                        onClick={() => {
-                          addtrackingEvent({
-                            vi_tri: TRACKING_VI_TRI.MENU,
-                            field_id: TRACKING_NAMES["MENU_Tai-ung-dung"],
-                          });
-                        }}
                       >
                         <Box sx={{ display: "flex", marginRight: 7 }}>
                           <Image
@@ -429,7 +377,7 @@ export default function Header() {
                     </HoverMenu>
                   </Popover.Dropdown>
                 </Popover>
-                {process.env.NODE_ENV === "development" && (
+                {/* {process.env.NODE_ENV === "development" && (
                   <li className={classes.menuItem} style={{ marginLeft: 16 }}>
                     <SegmentedControl
                       value={locale}
@@ -454,7 +402,7 @@ export default function Header() {
                       }}
                     />
                   </li>
-                )}
+                )} */}
               </ul>
             </div>
           </div>
@@ -514,41 +462,17 @@ export default function Header() {
           </Link>
           <div className={classes.drawerItem}>
             <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.label}</Link>
-            <div
-              className={classes.drawerItemSub}
-              onClick={() => {
-                addtrackingEvent({
-                  vi_tri: TRACKING_VI_TRI.MENU,
-                  field_id: TRACKING_NAMES["MENU_BDS"],
-                });
-              }}
-            >
+            <div className={classes.drawerItemSub}>
               <Link href={"/san-pham/bat-dong-san"}>
                 {label?.[locale]?.menu?.sanPham?.child[0]}
               </Link>
             </div>
-            <div
-              className={classes.drawerItemSub}
-              onClick={() => {
-                addtrackingEvent({
-                  vi_tri: TRACKING_VI_TRI.MENU,
-                  field_id: TRACKING_NAMES["MENU_CP-ZO"],
-                });
-              }}
-            >
+            <div className={classes.drawerItemSub}>
               {/* <Link href={"/san-pham/co-phan-zenone"}>Cổ phần ZenOne</Link> */}
               <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.child[1]}</Link>
               {/* <Badge ml={8}>Sắp ra mắt</Badge> */}
             </div>
-            <div
-              className={classes.drawerItemSub}
-              onClick={() => {
-                addtrackingEvent({
-                  vi_tri: TRACKING_VI_TRI.MENU,
-                  field_id: TRACKING_NAMES["MENU_CP-Startups"],
-                });
-              }}
-            >
+            <div className={classes.drawerItemSub}>
               <Link href={"#"}>{label?.[locale]?.menu?.sanPham?.child[2]}</Link>
               {/* <Link href={"/san-pham/co-phan-startups"}>Cổ phần Startups</Link> */}
               {/* <Badge ml={8}>Sắp ra mắt</Badge> */}
@@ -557,28 +481,12 @@ export default function Header() {
           {/*  */}
           <div className={classes.drawerItem}>
             <Link href={"#"}>{label?.[locale]?.menu?.tinTuc?.label}</Link>
-            <div
-              className={classes.drawerItemSub}
-              onClick={() => {
-                addtrackingEvent({
-                  vi_tri: TRACKING_VI_TRI.MENU,
-                  field_id: TRACKING_NAMES["MENU_Tin-tuc-ZO"],
-                });
-              }}
-            >
+            <div className={classes.drawerItemSub}>
               <Link href={"/tin-tuc/tin-zenone"}>
                 {label?.[locale]?.menu?.tinTuc?.child[0]}
               </Link>
             </div>
-            <div
-              className={classes.drawerItemSub}
-              onClick={() => {
-                addtrackingEvent({
-                  vi_tri: TRACKING_VI_TRI.MENU,
-                  field_id: TRACKING_NAMES["MENU_Tin-tuc-KM"],
-                });
-              }}
-            >
+            <div className={classes.drawerItemSub}>
               <Link href={"/tin-tuc/tin-uu-dai"}>
                 {label?.[locale]?.menu?.tinTuc?.child[1]}
               </Link>
@@ -590,15 +498,7 @@ export default function Header() {
               {label?.[locale]?.menu?.veZenOne?.label}
             </Link>
           </div>
-          <div
-            className={classes.drawerItem}
-            onClick={() => {
-              addtrackingEvent({
-                vi_tri: TRACKING_VI_TRI.MENU,
-                field_id: TRACKING_NAMES["MENU_Huong-dan-su-dung"],
-              });
-            }}
-          >
+          <div className={classes.drawerItem}>
             <Link href={"/ho-tro/huong-dan-su-dung"}>
               {label?.[locale]?.menu?.huongDanSuDung?.label}
             </Link>
@@ -626,10 +526,6 @@ export default function Header() {
             }}
             onClick={() => {
               setOpenSignup((e) => !e);
-              addtrackingEvent({
-                vi_tri: TRACKING_VI_TRI.MENU,
-                field_id: TRACKING_NAMES["MENU_Dang-ky"],
-              });
             }}
           >
             <Box sx={{ display: "flex", marginRight: 7 }}>

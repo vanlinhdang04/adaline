@@ -1,9 +1,4 @@
 import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
-import {
-	addtrackingEvent,
-	TRACKING_NAMES,
-	TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import sanitizeDOMData from "@/utils/sanitizeDOMData";
 import { Center, Grid } from "@mantine/core";
 import Link from "next/link";
@@ -59,20 +54,16 @@ function ListCartProduct({ data }) {
 								?.map((el) => el?.label);
 
 							let redirectLink;
-							let trackingName;
 							if (item?.id === "bat-dong-san") {
 								redirectLink = "/san-pham/bat-dong-san";
-								trackingName = TRACKING_NAMES["TRANG_CHU_SanPham_BDS"];
 							}
 							if (item?.id === "co-phan-zenone") {
 								// redirectLink = "/san-pham/co-phan-zenone";
 								redirectLink = "#/";
-								trackingName = TRACKING_NAMES["TRANG_CHU_SanPham_CPS"];
 							}
 							if (item?.id === "co-phan-startups") {
 								// redirectLink = "/san-pham/co-phan-startups";
 								redirectLink = "#/";
-								trackingName = TRACKING_NAMES["TRANG_CHU_SanPham_CPZ"];
 							}
 
 							return (
@@ -81,12 +72,6 @@ function ListCartProduct({ data }) {
 									xs={12}
 									md={6}
 									lg={4}
-									onClick={() => {
-										addtrackingEvent({
-											vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-											field_id: trackingName,
-										});
-									}}
 								>
 									<Link href={redirectLink} passHref>
 										<a>

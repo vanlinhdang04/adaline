@@ -1,11 +1,5 @@
 import { postContact } from "@/apis/queryFunctions/contact";
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 // import { appAlert } from "@/setup/mantine-provider/notifications";
-import sanitizeDOMData from "@/utils/sanitizeDOMData";
 import {
   Box,
   Button,
@@ -97,18 +91,6 @@ export default function Form({
       //   type: "success",
       //   message: "Gửi thông tin thành công. ZenOne sẽ liên hệ bạn trong 24h",
       // });
-      if (isFooter) {
-        addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI.FOOTER,
-          field_id: TRACKING_NAMES["FOOTER_Form-lien-he"],
-        });
-      }
-      if (bds) {
-        addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI.BDS,
-          field_id: TRACKING_NAMES.BDS_Form,
-        });
-      }
       form.reset();
     },
   });

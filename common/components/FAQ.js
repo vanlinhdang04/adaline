@@ -1,19 +1,6 @@
-import {
-  fetchPageInfo,
-  useFetchPageInfo,
-} from "@/apis/queryFunctions/pageInfo";
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
-import pageInfoKeys from "@/apis/queryKeys/pageInfoKey";
 import sanitizeDOMData from "@/utils/sanitizeDOMData";
-
 import { Accordion, Center, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
-
 import Image from "next/image";
 import down from "public/icons/arrow-down-right.png";
 
@@ -151,15 +138,7 @@ export default function FAQ({ isPage = false, isHelp = false, data }) {
             },
           })}
         >
-          <div
-            onClick={() => {
-              console.log("aaaaaaaaaa");
-              addtrackingEvent({
-                vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-                field_id: TRACKING_NAMES["TRANG_CHU_Hoi-dap"],
-              });
-            }}
-          >
+          <div>
             <BtnShowMore href={"/ho-tro/cau-hoi-thuong-gap"} />
           </div>
         </Center>

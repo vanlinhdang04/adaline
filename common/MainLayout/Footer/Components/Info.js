@@ -1,21 +1,16 @@
 import { useFetchAppInfo } from "@/apis/queryFunctions/appInfo";
 import { SUB_POSITION } from "@/apis/queryFunctions/subcribePosition";
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import { Grid, Text } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import arrow from "public/icons/arrow.png";
 import Facebook from "public/icons/Facebook.png";
+import Youtube from "public/icons/Youtube.png";
+import Zalo from "public/icons/Zalo.png";
+import arrow from "public/icons/arrow.png";
 import Home from "public/icons/home.png";
 import Mail from "public/icons/mail.png";
 import Phone from "public/icons/phone.png";
-import Youtube from "public/icons/Youtube.png";
-import Zalo from "public/icons/Zalo.png";
 import logo from "public/images/footer_logo.png";
 import useStyles from "../styles";
 import Form from "./Form";
@@ -183,14 +178,7 @@ export default function Info() {
           {locale == "vi" ? "Cổ phần Starups" : "Shares of Startups"}
         </InfoText>
         <InfoTitle>{locale == "vi" ? "Hỗ trợ" : "Support"} </InfoTitle>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Ho-tro-KH"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/ho-tro/ho-tro-khach-hang"}
@@ -198,14 +186,7 @@ export default function Info() {
             {locale == "vi" ? "Hỗ trợ khách hàng" : "Customer support"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Huong-dan-su-dung"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/ho-tro/huong-dan-su-dung"}
@@ -213,14 +194,7 @@ export default function Info() {
             {locale == "vi" ? "Hướng dẫn sử dụng" : "User manual"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Dieu-khoan-su-sung"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/ho-tro/dieu-khoan-su-dung"}
@@ -228,14 +202,7 @@ export default function Info() {
             {locale == "vi" ? "Điều khoản sử dụng" : "Terms of use"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Hoi-dap-thuong-gap"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/ho-tro/cau-hoi-thuong-gap"}
@@ -252,14 +219,7 @@ export default function Info() {
             ? "Chính sách đầu tư/ hợp tác"
             : "Investment/cooperation policy"}
         </InfoTitle>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES.FOOTER_Chinhsach_BDS,
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/chinh-sach-dau-tu-hop-tac"}
@@ -270,14 +230,7 @@ export default function Info() {
               : "Real estate investment policy"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES.FOOTER_Chinhsach_CP,
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             // link={"/chinh-sach-dau-tu-hop-tac"}
@@ -288,14 +241,7 @@ export default function Info() {
               : "Equity investment policy"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Chinh-sach-gioi-thieu"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             link={"/chinh-sach-dau-tu-hop-tac"}
@@ -304,14 +250,7 @@ export default function Info() {
             {locale == "vi" ? "Chính sách giới thiệu" : "Referral Policy"}
           </InfoText>
         </div>
-        <div
-          onClick={() => {
-            addtrackingEvent({
-              vi_tri: TRACKING_VI_TRI.FOOTER,
-              field_id: TRACKING_NAMES["FOOTER_Chinh-sach CTV"],
-            });
-          }}
-        >
+        <div>
           <InfoText
             className={classes.infoText}
             // link={"/chinh-sach-dau-tu-hop-tac"}

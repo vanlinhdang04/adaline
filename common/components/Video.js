@@ -1,8 +1,3 @@
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import { Box, Modal } from "@mantine/core";
 import Image from "next/image";
@@ -75,10 +70,6 @@ function Video({ video_url, placeholderImageUrl }) {
             })}
             onClick={() => {
               setIsVideoOpen(true);
-              addtrackingEvent({
-                vi_tri: TRACKING_VI_TRI.BDS,
-                field_id: TRACKING_NAMES.BDS_play,
-              });
             }}
           >
             <Box

@@ -1,16 +1,8 @@
 import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
-import {
-  addtrackingEvent,
-  TRACKING_NAMES,
-  TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import {
-  AspectRatio,
-  Box,
   Center,
   Grid,
-  SimpleGrid,
   Text,
 } from "@mantine/core";
 import Image from "next/image";
@@ -24,55 +16,6 @@ export default function ChildCompany({ bordered = false }) {
     condition: { ngon_ngu: locale },
   });
   const { add_on_4: companyList } = data || {};
-  const handleTracking = (link) => {
-    switch (link) {
-      case "zengroup":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_ZG,
-        });
-      case "viet-thien":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_VT,
-        });
-      case "zentaland":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_ZTL,
-        });
-      case "zenbliss":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_ZB,
-        });
-      case "zen-faco":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_ZF,
-        });
-      case "anh-quang":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_AQ,
-        });
-      case "asia":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_Asia,
-        });
-      case "the-gioi-thep":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_TGT,
-        });
-      case "zen-app":
-        return addtrackingEvent({
-          vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-          field_id: TRACKING_NAMES.TRANG_CHU_Hesinhthai_ZA,
-        });
-    }
-  };
   return (
     <div>
       <Center>
@@ -142,7 +85,7 @@ export default function ChildCompany({ bordered = false }) {
               }}
             >
               <Link href={`${item.label}`} key={index}>
-                <a target="_blank" onClick={() => handleTracking(item?.id)}>
+                <a target="_blank">
                   <Image
                     src={appendImageUrlFromAPI({
                       src: item.pictures[0].picture_url,

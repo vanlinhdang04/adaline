@@ -1,8 +1,3 @@
-import {
-	addtrackingEvent,
-	TRACKING_NAMES,
-	TRACKING_VI_TRI,
-} from "@/apis/queryFunctions/tracking";
 import { useMediaQuery } from "@mantine/hooks";
 import Image from "next/image";
 import qrcode from "public/images/qrcode.png";
@@ -22,28 +17,13 @@ export default function DownloadApp({ banner, isStep = false }) {
 					justifyContent: isMobile ? "space-between" : "flex-start",
 				}}
 			>
-				<div
-					style={{ marginRight: 16 }}
-					onClick={() => {
-						addtrackingEvent({
-							vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-							field_id: TRACKING_NAMES["TRANG_CHU_Taiungdung_appstore"],
-						});
-					}}
-				>
+				<div style={{ marginRight: 16 }}>
 					<AppStore
 						width={isStep ? 132 : isMobile ? 178 : 160}
 						height={isStep ? 39 : isMobile ? 53 : 47}
 					/>
 				</div>
-				<div
-					onClick={() => {
-						addtrackingEvent({
-							vi_tri: TRACKING_VI_TRI["TRANG-CHU"],
-							field_id: TRACKING_NAMES["TRANG_CHU_Taiungdung_android"],
-						});
-					}}
-				>
+				<div>
 					<ChPlay
 						width={isStep ? 132 : isMobile ? 178 : 160}
 						height={isStep ? 39 : isMobile ? 53 : 47}
@@ -72,26 +52,10 @@ export default function DownloadApp({ banner, isStep = false }) {
 					justifyContent: "space-between",
 				}}
 			>
-				<div
-					onClick={() => {
-						addtrackingEvent({
-							vi_tri: TRACKING_VI_TRI.MENU,
-							field_id: TRACKING_NAMES["MENU_Taiungdung_appstore"],
-						});
-					}}
-					style={{ display: "flex" }}
-				>
+				<div style={{ display: "flex" }}>
 					<AppStore width={142} height={42} />
 				</div>
-				<div
-					onClick={() => {
-						addtrackingEvent({
-							vi_tri: TRACKING_VI_TRI.MENU,
-							field_id: TRACKING_NAMES["MENU_Taiungdung_android"],
-						});
-					}}
-					style={{ display: "flex" }}
-				>
+				<div style={{ display: "flex" }}>
 					<ChPlay width={142} height={42} />
 				</div>
 			</div>
