@@ -1,4 +1,4 @@
-import thumbnailIMG from '@/public/images/thumbnail.jpg'
+import thumbnailIMG from '@/public/images/thumbnail.avif'
 import { Box, Center, Modal } from '@mantine/core'
 import Image from 'next/image'
 import React from 'react'

@@ -8,7 +8,6 @@ import React from 'react';
 import DownloadApp from '../DownloadApp';
 
 const BannerHome = ({onClickScroll}) => {
-  console.log("BannerIMG", BannerIMG)
 	const ref = React.useRef(null);
 	const [lottie, setLottie] = React.useState(null);
 

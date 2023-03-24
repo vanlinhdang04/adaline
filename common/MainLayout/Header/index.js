@@ -192,7 +192,7 @@ export default function Header() {
     setOpenDrawer(false);
   }, [asPath]);
   return (
-    <div className={classes.header}>
+    <header className={classes.header}>
       <div className={classes.wrapperDesktop}>
         <Container>
           <div className={classes.wrapper}>
@@ -643,6 +643,6 @@ export default function Header() {
           ></Form>
         </Box>
       </Modal>
-    </div>
+    </header>
   );
 }

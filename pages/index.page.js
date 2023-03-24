@@ -53,7 +53,7 @@ export default function Home() {
     // offset: 60,
     duration: 1000,
   });
-  console.log("a", data)
+  console.log(data)
   return (
     <>
       <div>
@@ -68,6 +68,7 @@ export default function Home() {
           <Box ref={targetRef}>
             <VideoHome/>
           </Box>
+          <Line index={0} />
           <Companion/>
           <Advantage/>
           <QA/>
