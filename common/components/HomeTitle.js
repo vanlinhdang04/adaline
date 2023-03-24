@@ -11,7 +11,7 @@ export default function HomeTitle({ children, ...style }) {
 				// textAlign: "left",
 				fontSize: 34,
 				marginBottom: 40,
-				fontWeight: "400",
+				fontWeight: "500",
 
 				// marginTop: 0,
 				[`@media (max-width: ${theme.breakpoints.md}px)`]: {

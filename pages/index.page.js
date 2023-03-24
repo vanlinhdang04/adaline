@@ -2,14 +2,20 @@ import { fetchAPI } from "@/apis/api";
 import { fetchAppInfo } from "@/apis/queryFunctions/appInfo";
 import {
   fetchPageInfos,
-  useFetchPageInfos,
+  useFetchPageInfos
 } from "@/apis/queryFunctions/pageInfo";
 // import { fetchHighlightedProducts } from "@/apis/queryFunctions/productType";
 import pageInfoKeys from "@/apis/queryKeys/pageInfoKey";
 import Ecosystems from "@/common/components/Ecosystems";
 import FAQ from "@/common/components/FAQ";
+import Advantage from "@/common/components/Home/Advantage";
+import BannerHome from "@/common/components/Home/BannerHome";
+import Companion from "@/common/components/Home/Companion";
+import DownloadHone from "@/common/components/Home/DownloadHone";
 import ListCartProduct from "@/common/components/Home/ListCartProduct";
 import ProjectHightLight from "@/common/components/Home/ProjectHightLight";
+import QA from "@/common/components/Home/QA";
+import VideoHome from "@/common/components/Home/VideoHome";
 import HomeBanner from "@/common/components/HomeBanner";
 import HomeDownload from "@/common/components/HomeDownload";
 import HomeVideo from "@/common/components/HomeVideo";
@@ -47,14 +53,7 @@ export default function Home() {
     // offset: 60,
     duration: 1000,
   });
-
-  React.useEffect(() => {
-    const fetch = async () => {
-      const a = await fetchAPI("/articles");
-      console.log("a", a);
-    };
-    fetch();
-  }, []);
+  console.log("a", data)
   return (
     <>
       <div>
@@ -65,6 +64,16 @@ export default function Home() {
 
         <Popup />
         <Container>
+          <BannerHome onClickScroll={() => scrollIntoView({ alignment: "start" })}/>
+          <Box ref={targetRef}>
+            <VideoHome/>
+          </Box>
+          <Companion/>
+          <Advantage/>
+          <QA/>
+          <DownloadHone/>
+        </Container>
+        {/* <Container>
           <HomeBanner
             data={data?.filter((x) => x.ma_trang === "web-home-banner")[0]}
             onClickScroll={() => scrollIntoView({ alignment: "start" })}
@@ -85,8 +94,8 @@ export default function Home() {
               data?.filter((x) => x.ma_trang === "web/home/product-type")[0]
             }
           />
-        </Container>
-        <Box component="section" my={48}>
+        </Container> */}
+        {/* <Box component="section" my={48}>
           <ProjectHightLight
             data={
               data?.filter(
@@ -94,9 +103,9 @@ export default function Home() {
               )[0]
             }
           />
-        </Box>
+        </Box> */}
 
-        <Box component="section" my={48}>
+        {/* <Box component="section" my={48}>
           <Container>
             <WhereProfit
               data={
@@ -104,8 +113,8 @@ export default function Home() {
               }
             />
           </Container>
-        </Box>
-        <Box
+        </Box> */}
+        {/* <Box
           component="section"
           sx={(theme) => ({
             marginBottom: 80,
@@ -119,9 +128,9 @@ export default function Home() {
               data={data?.filter((x) => x.ma_trang === "web-3-buoc")[0]}
             ></Step>
           </Container>
-        </Box>
+        </Box> */}
 
-        <Box
+        {/* <Box
           component="section"
           // sx={(theme) => ({
           //   marginBottom: 40,
@@ -131,8 +140,8 @@ export default function Home() {
           // })}
         >
           <Ecosystems></Ecosystems>
-        </Box>
-        <Container>
+        </Box> */}
+        {/* <Container>
           <FAQ
             data={data?.filter((x) => x.ma_trang === "web-hoi-dap")[0]}
           ></FAQ>
@@ -140,7 +149,7 @@ export default function Home() {
           <HomeDownload
             data={data?.filter((x) => x.ma_trang === "web-home-download")[0]}
           />
-        </Container>
+        </Container> */}
       </div>
     </>
   );

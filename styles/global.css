@@ -63,6 +63,11 @@ body {
   /* overflow-x: hidden; */
 }
 
+.company-name {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 #news-slider .slick-list {
   /* overflow: inherit; */
   padding: 0 0 40px;

@@ -10,7 +10,7 @@ import {
 	MediaQuery,
 	Skeleton,
 	Text,
-	Title,
+	Title
 } from "@mantine/core";
 import Image from "next/image";
 import ListIcon from "public/icons/list-icon.svg";
@@ -119,11 +119,11 @@ export default function HomeBanner({ data, onClickScroll }) {
 								},
 							})}
 						>
-							{sanitizeDOMData(title)}
-							{/* <p>
+							{/* {sanitizeDOMData(title)} */}
+							<p>
 								Đầu tư vượt trội cùng{" "}
-								<span style={{ color: "#3CAEA4" }}>ZenOne</span>
-							</p> */}
+								<span className="company-name">Adaline</span>
+							</p>
 						</Title>
 						<Text
 							weight={600}
@@ -169,11 +169,14 @@ export default function HomeBanner({ data, onClickScroll }) {
 							}}
 							mb={16}
 						>
-							{listItem
+							<List.Item>Đơn giản, dẽ dùng</List.Item>
+							<List.Item>Phù hợp cho từng ngành hàng</List.Item>
+							<List.Item>Tiết kiệm chi phí nhất</List.Item>
+							{/* {listItem
 								?.sort((a, b) => a?.stt - b?.stt)
 								?.map((item, k) => (
 									<List.Item key={k}>{item.content}</List.Item>
-								))}
+								))} */}
 						</List>
 						<DownloadApp banner={true} />
 					</Box>
