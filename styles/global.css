@@ -42,6 +42,7 @@
   --color-white: #fff;
   --color-light: rgba(255,255,255,0.6);
   --color-black: #001529;
+  --color-gray: '#a0a0bf';
 
   --transition: all 400ms ease;
   --transition-md: all 600ms;

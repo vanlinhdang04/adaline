@@ -9,8 +9,8 @@ import { RiShieldCheckLine } from '@react-icons/all-files/ri/RiShieldCheckLine';
 import { VscFile } from '@react-icons/all-files/vsc/VscFile';
 import Image from "next/image";
 import React from "react";
+import WhyInvestItem from "./AvantageItem";
 import HomeTitle from "./HomeTitle";
-import WhyInvestItem from "./WhyInvestItem";
 
 export default function WhyInvest({ data }) {
 	const list = data?.add_on_4?.filter((x) => x.id === "list")[0];
@@ -73,7 +73,7 @@ export default function WhyInvest({ data }) {
 					{a.map((item, index) => (
 						<Grid.Col key={index} sm={12} md={6} lg={4}>
 							
-							<WhyInvestItem icon={item.icon} title={item.title} text={item.text}/>
+							<AvantageItem icon={item.icon} title={item.title} text={item.text}/>
 						</Grid.Col>
 					))}
 				</Grid>

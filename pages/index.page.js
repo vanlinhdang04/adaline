@@ -70,6 +70,7 @@ export default function Home() {
           </Box>
           <Line index={0} />
           <Companion/>
+          <Line index={1} />
           <Advantage/>
           <QA/>
           <DownloadHone/>
