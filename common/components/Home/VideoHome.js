@@ -17,7 +17,7 @@ const VideoHome = () => {
 				})}
 			>
 				<HomeTitle style={{ textAlign: "center", maxWidth: 606 }}>
-					Giới thiệu về ADALINE
+					Giới thiệu về <span className='company-name'>Adaline</span>
 				</HomeTitle>
 			</Center>
 

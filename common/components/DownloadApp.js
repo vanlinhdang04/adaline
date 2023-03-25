@@ -4,6 +4,7 @@ import qrcode from "public/images/qrcode.png";
 import React from "react";
 import AppStore from "./Download/AppStore";
 import ChPlay from "./Download/ChPlay";
+import Windows from "./Download/Windows";
 // import QrCode from "./Download/QrCode";
 
 export default function DownloadApp({ banner, isStep = false }) {
@@ -23,8 +24,14 @@ export default function DownloadApp({ banner, isStep = false }) {
 						height={isStep ? 39 : isMobile ? 53 : 47}
 					/>
 				</div>
-				<div>
+				<div style={{ marginRight: 16 }}>
 					<ChPlay
+						width={isStep ? 132 : isMobile ? 178 : 160}
+						height={isStep ? 39 : isMobile ? 53 : 47}
+					/>
+				</div>
+				<div>
+					<Windows
 						width={isStep ? 132 : isMobile ? 178 : 160}
 						height={isStep ? 39 : isMobile ? 53 : 47}
 					/>
@@ -57,6 +64,9 @@ export default function DownloadApp({ banner, isStep = false }) {
 				</div>
 				<div style={{ display: "flex" }}>
 					<ChPlay width={142} height={42} />
+				</div>
+				<div style={{ display: "flex" }}>
+					<Windows width={142} height={42} />
 				</div>
 			</div>
 		</div>

@@ -1,11 +1,9 @@
-import sanitizeDOMData from '@/utils/sanitizeDOMData';
 import { Box, Text, ThemeIcon, Title } from '@mantine/core';
-import { GenIcon, IconBase, IconContext } from '@react-icons/all-files';
 import React from 'react';
 
 const AvantageItem = ({icon, title, text}) => {
   return (
-    <Box sx={(theme) => ({
+    <Box sx={() => ({
         height: '100%',
         background: '#fafafd',
         padding: '1.5rem',
