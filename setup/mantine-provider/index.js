@@ -101,7 +101,7 @@ export default function ThemeProvider({ children }) {
           Pagination: {
             defaultProps: {
               radius: 7,
-              fontSize: 18,
+              fontSize: 16,
               size: "xl",
               color: "#ADB4BB",
               styles: {
@@ -179,6 +179,11 @@ export default function ThemeProvider({ children }) {
                     }
                 }
               },
+            },
+          },
+          Title: {
+            defaultProps: {
+              color: "#001529",
             },
           },
         },

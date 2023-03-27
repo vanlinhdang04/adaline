@@ -77,6 +77,7 @@ export default function Home() {
           <Advantage />
           <Line index={2} />
           <SpecialFeatures />
+          <Line index={0} />
           <QA />
           <DownloadHone />
         </Container>
