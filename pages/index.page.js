@@ -2,7 +2,7 @@ import { fetchAPI } from "@/apis/api";
 import { fetchAppInfo } from "@/apis/queryFunctions/appInfo";
 import {
   fetchPageInfos,
-  useFetchPageInfos
+  useFetchPageInfos,
 } from "@/apis/queryFunctions/pageInfo";
 // import { fetchHighlightedProducts } from "@/apis/queryFunctions/productType";
 import pageInfoKeys from "@/apis/queryKeys/pageInfoKey";
@@ -15,6 +15,7 @@ import DownloadHone from "@/common/components/Home/DownloadHone";
 import ListCartProduct from "@/common/components/Home/ListCartProduct";
 import ProjectHightLight from "@/common/components/Home/ProjectHightLight";
 import QA from "@/common/components/Home/QA";
+import SpecialFeatures from "@/common/components/Home/SpecialFeatures";
 import VideoHome from "@/common/components/Home/VideoHome";
 import HomeBanner from "@/common/components/HomeBanner";
 import HomeDownload from "@/common/components/HomeDownload";
@@ -53,7 +54,7 @@ export default function Home() {
     // offset: 60,
     duration: 1000,
   });
-  console.log(data)
+  console.log(data);
   return (
     <>
       <div>
@@ -64,16 +65,20 @@ export default function Home() {
 
         <Popup />
         <Container>
-          <BannerHome onClickScroll={() => scrollIntoView({ alignment: "start" })}/>
+          <BannerHome
+            onClickScroll={() => scrollIntoView({ alignment: "start" })}
+          />
           <Box ref={targetRef}>
-            <VideoHome/>
+            <VideoHome />
           </Box>
           <Line index={0} />
-          <Companion/>
+          <Companion />
           <Line index={1} />
-          <Advantage/>
-          <QA/>
-          <DownloadHone/>
+          <Advantage />
+          <Line index={2} />
+          <SpecialFeatures />
+          <QA />
+          <DownloadHone />
         </Container>
         {/* <Container>
           <HomeBanner
