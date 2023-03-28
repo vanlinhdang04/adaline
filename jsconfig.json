@@ -9,7 +9,8 @@
       "@/setup/*": ["setup/*"],
       "@/utils/*": ["utils/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/apis/*": ["apis/*"]
+      "@/apis/*": ["apis/*"],
+      "@/api/*": ["api/*"]
     }
   }
 }

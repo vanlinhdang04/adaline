@@ -5,63 +5,53 @@ import {
   useFetchPageInfos,
 } from "@/apis/queryFunctions/pageInfo";
 // import { fetchHighlightedProducts } from "@/apis/queryFunctions/productType";
-import pageInfoKeys from "@/apis/queryKeys/pageInfoKey";
-import Ecosystems from "@/common/components/Ecosystems";
-import FAQ from "@/common/components/FAQ";
+import DefaultSEO from "@/common/components/DefaultSEO";
 import Advantage from "@/common/components/Home/Advantage";
 import BannerHome from "@/common/components/Home/BannerHome";
 import Companion from "@/common/components/Home/Companion";
-import DownloadHone from "@/common/components/Home/DownloadHone";
-import ListCartProduct from "@/common/components/Home/ListCartProduct";
-import ProjectHightLight from "@/common/components/Home/ProjectHightLight";
+import DownloadHome from "@/common/components/Home/DownloadHome";
+import FreeProducts from "@/common/components/Home/FreeProducts";
 import QA from "@/common/components/Home/QA";
 import SpecialFeatures from "@/common/components/Home/SpecialFeatures";
 import VideoHome from "@/common/components/Home/VideoHome";
-import HomeBanner from "@/common/components/HomeBanner";
-import HomeDownload from "@/common/components/HomeDownload";
-import HomeVideo from "@/common/components/HomeVideo";
 import Line from "@/common/components/Line";
 import Popup from "@/common/components/Popup/Popup";
-import Step from "@/common/components/Step";
-import WhereProfit from "@/common/components/WhereProfit";
-import WhyInvest from "@/common/components/WhyInvest";
 import Container from "@/common/MainLayout/Container";
 import { Box } from "@mantine/core";
 import { useScrollIntoView } from "@mantine/hooks";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { title } from "next-seo.config";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import { fetchGlobal, useFetchGlobal } from "api/queryFunctions/global";
+import { queryKeyDetail } from "api/queryKeys/queryKeys";
 import React from "react";
 
 export default function Home() {
-  const { locale } = useRouter();
-  const list = [
-    "web-home-banner",
-    "web-home-video",
-    "web-home-why-invest",
-    "web-home-where-profit",
-    "web-home-download",
-    "web/home/product-type",
-    "web/home/product-hightlight",
-    "web-3-buoc",
-    "web-hoi-dap",
-  ];
-
-  const { data } = useFetchPageInfos(list, { condition: { ngon_ngu: locale } });
-
   const { scrollIntoView, targetRef } = useScrollIntoView({
     // offset: 60,
     duration: 1000,
   });
-  console.log(data);
+
+  const { data } = useFetchGlobal();
+
+  const defaultSeo = data?.attributes?.defaultSeo;
+
+  React.useEffect(() => {
+    const fetch = async () => {
+      const a = await fetchGlobal();
+      return console.log(a);
+    };
+    // fetch();
+  }, []);
+
   return (
     <>
       <div>
-        <Head>
-          <title>{title}</title>
-          {/* <meta name="description" content="Website đầu tư ZenOne" /> */}
-        </Head>
+        <DefaultSEO
+          seo={{
+            title: defaultSeo?.metaTitle,
+            description: defaultSeo?.metaDescription,
+            shareImage: defaultSeo?.shareImage,
+          }}
+        />
 
         <Popup />
         <Container>
@@ -79,7 +69,10 @@ export default function Home() {
           <SpecialFeatures />
           <Line index={0} />
           <QA />
-          <DownloadHone />
+          <Line index={1} />
+          <FreeProducts />
+          <Line index={2} />
+          <DownloadHome />
         </Container>
         {/* <Container>
           <HomeBanner
@@ -166,24 +159,10 @@ export default function Home() {
 export async function getStaticProps({ locale }) {
   const queryClient = new QueryClient();
 
-  const list = [
-    "web-home-banner",
-    "web-home-video",
-    "web-home-why-invest",
-    "web-home-where-profit",
-    "web-home-download",
-    "web/home/product-type",
-    "web/home/product-hightlight",
-    "web-3-buoc",
-    "web-hoi-dap",
-  ];
-
   // PAGE INFO
-  await queryClient.prefetchQuery(
-    pageInfoKeys.list(list, { condition: { ngon_ngu: locale } }),
-    () => fetchPageInfos(list, { condition: { ngon_ngu: locale } })
+  await queryClient.prefetchQuery(queryKeyDetail("/global"), () =>
+    fetchGlobal()
   );
-  await queryClient.prefetchQuery(["appInfo"], () => fetchAppInfo());
 
   return {
     props: {
