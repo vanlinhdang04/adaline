@@ -38,25 +38,18 @@ const Windows = ({ width, height }) => {
         href={"https://play.google.com/store/apps/details?id=app.zenone"}
         passHref
       >
-        <a
-          target={"_blank"}
-          style={{
-            lineHeight: "0px",
-            border: "1px solid var(--color-primary)",
-            borderRadius: "4px",
-            overflow: "hidden",
-          }}
-        >
+        <a target={"_blank"} style={{ lineHeight: "0px" }}>
           <Image
             src={IMG}
             alt="AppStore"
-            width={width - 2}
-            height={height - 2}
+            width={width}
+            height={height}
             layout="intrinsic"
-            // blurDataURL="https://via.placeholder.com/226x66"
-            // objectFit="contain"
+            blurDataURL="https://via.placeholder.com/226x66"
+            objectFit="contain"
             style={{
-              border: "1px solid var(--color-primary)",
+              borderRadius: "8px",
+              overflow: "hidden",
             }}
           />
         </a>
