@@ -1,4 +1,6 @@
+import { useFetchGlobal } from "@/api/queryFunctions/global";
 import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
+import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import { Box } from "@mantine/core";
 import Image from "next/image";
@@ -8,36 +10,28 @@ import IMG from "public/images/windows.png";
 import React from "react";
 
 const Windows = ({ width, height }) => {
-  const { locale } = useRouter();
-  const { data } = useFetchPageInfo("web-home-download", {
-    condition: { ngon_ngu: locale },
-  });
+  const { data } = useFetchGlobal();
 
-  const imgQrCode = data?.pictures?.filter(
-    (x) => x.picture_id === "qrcode-ch-play"
-  )[0]?.picture_url;
   return (
     <Box
       style={{
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
       }}
     >
       <Box style={{ display: "flex" }}>
         <Image
-          src={appendImageUrlFromAPI({ src: imgQrCode, size: "m" })}
+          src={appendImageFromAPI(data.attributes.qrcode.data.attributes.url)}
           alt="QR Download on AppStore"
-          width={width}
-          height={width}
+          width={width * 0.9}
+          height={width * 0.9}
           layout="intrinsic"
         />
       </Box>
-      <Link
-        href={"https://play.google.com/store/apps/details?id=app.zenone"}
-        passHref
-      >
+      <Link href={data.attributes.download.windowsURL} passHref>
         <a target={"_blank"} style={{ lineHeight: "0px" }}>
           <Image
             src={IMG}

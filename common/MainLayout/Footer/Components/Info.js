@@ -1,34 +1,53 @@
-import { useFetchAppInfo } from "@/apis/queryFunctions/appInfo";
+import { useFetchGlobal } from "@/api/queryFunctions/global";
 import { SUB_POSITION } from "@/apis/queryFunctions/subcribePosition";
-import { Grid, Text } from "@mantine/core";
+import { Box, Grid, Text } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Facebook from "public/icons/Facebook.png";
-import Youtube from "public/icons/Youtube.png";
-import Zalo from "public/icons/Zalo.png";
 import arrow from "public/icons/arrow.png";
+import Facebook from "public/icons/Facebook.png";
 import Home from "public/icons/home.png";
 import Mail from "public/icons/mail.png";
 import Phone from "public/icons/phone.png";
-import logo from "public/images/footer_logo.png";
+import Youtube from "public/icons/Youtube.png";
+import Zalo from "public/icons/Zalo.png";
+import logo from "public/images/logo_lite.org.ico";
 import useStyles from "../styles";
 import Form from "./Form";
 export default function Info() {
   const { classes } = useStyles();
-  const { data } = useFetchAppInfo({});
   const { locale } = useRouter();
-  // console.log(data);
+  const { data: global } = useFetchGlobal();
+  const { company } = global?.attributes || { company: {} };
+
   return (
     <Grid sx={{ width: "100%" }}>
       <Grid.Col sm={6} md={3.6} sx={{ margin: "13px 0px 0px " }}>
-        <Image src={logo} alt="ZenOne" priority height={56} width={127}></Image>
-        <Text>{locale == "vi" ? data?.name : data?.name_en}</Text>
-        <Text sx={{ paddingBottom: 15 }}>MST: {data?.ma_so_thue}</Text>
+        <Link href={"/"} passHref>
+          <a>
+            <Box
+              display={"flex"}
+              sx={{ alignItems: "center", userSelect: "none" }}
+            >
+              <Image
+                src={logo}
+                alt="Adaline"
+                priority
+                height={56}
+                width={63}
+                layout="intrinsic"
+              />
+              <h2 style={{ color: "var(--color-primary)" }}>ADALINE</h2>
+            </Box>
+          </a>
+        </Link>
+        {/* <Image src={logo} alt="ZenOne" priority height={56} width={127}></Image> */}
+        <Text>{company.name}</Text>
+        <Text sx={{ paddingBottom: 15 }}>MST: {company?.mst}</Text>
         <div style={{ display: "flex" }}>
-          <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
-            {data?.zalo ? (
-              <Link scroll={false} href={data?.zalo}>
+          {Boolean(company?.zalo) && (
+            <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
+              <Link scroll={false} href={company?.zalo}>
                 <a target={"_blank"} aria-label="Facebook">
                   <Image
                     src={Zalo}
@@ -40,19 +59,11 @@ export default function Info() {
                   ></Image>
                 </a>
               </Link>
-            ) : (
-              <Image
-                src={Zalo}
-                alt="Zalo"
-                priority
-                height={30}
-                width={30}
-              ></Image>
-            )}
-          </div>
-          <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
-            {data?.facebook ? (
-              <Link scroll={false} href={data?.facebook}>
+            </div>
+          )}
+          {Boolean(company?.facebook) && (
+            <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
+              <Link scroll={false} href={company?.facebook}>
                 <a target={"_blank"} aria-label="Facebook">
                   <Image
                     src={Facebook}
@@ -64,20 +75,11 @@ export default function Info() {
                   ></Image>
                 </a>
               </Link>
-            ) : (
-              <Image
-                src={Facebook}
-                alt="Facebook"
-                layout="fixed"
-                priority
-                height={30}
-                width={30}
-              ></Image>
-            )}
-          </div>
-          <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
-            {data?.youtube ? (
-              <Link scroll={false} href={data?.youtube}>
+            </div>
+          )}
+          {Boolean(company?.youtube) && (
+            <div style={{ margin: "5px 10px 5px 0", cursor: "pointer" }}>
+              <Link scroll={false} href={company?.youtube}>
                 <a target={"_blank"} aria-label="Facebook">
                   <Image
                     src={Youtube}
@@ -89,19 +91,10 @@ export default function Info() {
                   ></Image>
                 </a>
               </Link>
-            ) : (
-              <Image
-                src={Youtube}
-                alt="Youtube"
-                layout="fixed"
-                priority
-                height={30}
-                width={30}
-              ></Image>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div style={{ width: 20, height: 20, margin: "10px 10px 10px 0" }}>
             <Image
               src={Home}
@@ -112,36 +105,30 @@ export default function Info() {
               width={20}
             ></Image>
           </div>
-          <Text size={16} sx={{ marginTop: 10 }}>
-            {locale == "vi" ? data?.address : data?.address_en}
-          </Text>
+          <Text size={16}>{company.address}</Text>
         </div>
-        <div style={{ display: "flex" }}>
-          <div style={{ width: 20, height: 20, margin: "10px 10px 10px 0" }}>
-            <Image
-              src={Mail}
-              alt="Mail"
-              layout="fixed"
-              priority
-              objectFit="contain"
-              height={20}
-              width={20}
-            ></Image>
-          </div>
-          {data?.email ? (
-            <Link scroll={false} href={`mailto:${data?.email}`}>
+        {Boolean(company.email) && (
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ width: 20, height: 20, margin: "10px 10px 10px 0" }}>
+              <Image
+                src={Mail}
+                alt="Mail"
+                layout="fixed"
+                priority
+                objectFit="contain"
+                height={20}
+                width={20}
+              ></Image>
+            </div>
+            <Link scroll={false} href={`mailto:${company.email}`} passHref>
               <a target={"_blank"} aria-label="Email">
-                <Text size={16} sx={{ marginTop: 10 }}>
-                  info@zenone.com.vn
+                <Text size={16} color="var(--color-white)">
+                  {company.email}
                 </Text>
               </a>
             </Link>
-          ) : (
-            <Text size={16} sx={{ marginTop: 10, cursor: "pointer" }}>
-              info@zenone.com.vn
-            </Text>
-          )}
-        </div>
+          </div>
+        )}
         <div style={{ display: "flex" }}>
           <div style={{ width: 20, height: 20, margin: "10px 10px 10px 0" }}>
             <Image
@@ -154,7 +141,7 @@ export default function Info() {
             ></Image>
           </div>
           <Text size={16} sx={{ marginTop: 10 }}>
-            {data?.phone}
+            {company?.phone}
           </Text>
         </div>
       </Grid.Col>

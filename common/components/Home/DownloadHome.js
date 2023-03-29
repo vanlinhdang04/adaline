@@ -42,8 +42,7 @@ const DownloadHome = () => {
               height="315px"
               data-testid="fb:page Facebook Social Plugin"
               title="fb:page Facebook Social Plugin"
-              allowFullScreen="true"
-              scrolling="no"
+              allowFullScreen={true}
               allow="encrypted-media"
               src="https://web.facebook.com/v2.7/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df15ae1a87aa446%26domain%3Dvzsoft.net%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fvzsoft.net%252Ff2c0408a00053a4%26relation%3Dparent.parent&amp;container_width=460&amp;height=315&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fadalinejsc%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=timeline&amp;width=560"
               // style="border: none; visibility: visible; width: 460px; height: 315px;"

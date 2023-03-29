@@ -1,4 +1,6 @@
+import { useFetchGlobal } from "@/api/queryFunctions/global";
 import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
+import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import { Box } from "@mantine/core";
 import Image from "next/image";
@@ -8,34 +10,28 @@ import imgAppStore from "public/images/appstore.png";
 import React from "react";
 
 export default function AppStore({ width, height }) {
-  const { locale } = useRouter();
-  const { data } = useFetchPageInfo("web-home-download", {
-    condition: { ngon_ngu: locale },
-  });
-
-  const imgQrCode = data?.pictures?.filter(
-    (x) => x.picture_id === "qrcode-app-store"
-  )[0]?.picture_url;
+  const { data } = useFetchGlobal();
 
   return (
     <Box
       style={{
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
       }}
     >
       <Box style={{ display: "flex" }}>
         <Image
-          src={appendImageUrlFromAPI({ src: imgQrCode, size: "m" })}
+          src={appendImageFromAPI(data.attributes.qrcode.data.attributes.url)}
           alt="QR Download on AppStore"
-          width={width}
-          height={width}
+          width={width * 0.9}
+          height={width * 0.9}
           layout="intrinsic"
         />
       </Box>
-      <Link href={"https://apps.apple.com/vn/app/zenone/id1610451612"}>
+      <Link href={data.attributes.download.appStoreURL}>
         <a target={"_blank"} style={{ lineHeight: "0px", display: "block" }}>
           <Image
             src={imgAppStore}
