@@ -38,11 +38,11 @@
   --color-bg: #fdfdff;
   --color-bg-variant: #fdfbfb;
   --color-primary: #1498d5;
-  --color-primary-variant: rgba(20,152,213, 0.4);
+  --color-primary-variant: rgba(20, 152, 213, 0.4);
   --color-white: #fff;
-  --color-light: rgba(255,255,255,0.6);
+  --color-light: rgba(255, 255, 255, 0.6);
   --color-black: #001529;
-  --color-gray: '#a0a0bf';
+  --color-gray: #a0a0bf;
 
   --transition: all 400ms ease;
   --transition-md: all 600ms;

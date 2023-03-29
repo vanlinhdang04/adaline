@@ -1,10 +1,3 @@
-import { fetchAPI } from "@/apis/api";
-import { fetchAppInfo } from "@/apis/queryFunctions/appInfo";
-import {
-  fetchPageInfos,
-  useFetchPageInfos,
-} from "@/apis/queryFunctions/pageInfo";
-// import { fetchHighlightedProducts } from "@/apis/queryFunctions/productType";
 import DefaultSEO from "@/common/components/DefaultSEO";
 import Advantage from "@/common/components/Home/Advantage";
 import BannerHome from "@/common/components/Home/BannerHome";
@@ -13,6 +6,7 @@ import DownloadHome from "@/common/components/Home/DownloadHome";
 import FreeProducts from "@/common/components/Home/FreeProducts";
 import QA from "@/common/components/Home/QA";
 import SpecialFeatures from "@/common/components/Home/SpecialFeatures";
+import Version from "@/common/components/Home/Version";
 import VideoHome from "@/common/components/Home/VideoHome";
 import Line from "@/common/components/Line";
 import Popup from "@/common/components/Popup/Popup";
@@ -23,6 +17,8 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { fetchGlobal, useFetchGlobal } from "api/queryFunctions/global";
 import { queryKeyDetail } from "api/queryKeys/queryKeys";
 import React from "react";
+import { fetchFreeProducts } from "./../api/queryFunctions/freeProducts";
+import { queryKeyList } from "./../api/queryKeys/queryKeys";
 
 export default function Home() {
   const { scrollIntoView, targetRef } = useScrollIntoView({
@@ -33,14 +29,6 @@ export default function Home() {
   const { data } = useFetchGlobal();
 
   const defaultSeo = data?.attributes?.defaultSeo;
-
-  React.useEffect(() => {
-    const fetch = async () => {
-      const a = await fetchGlobal();
-      return console.log(a);
-    };
-    // fetch();
-  }, []);
 
   return (
     <>
@@ -73,6 +61,8 @@ export default function Home() {
           <FreeProducts />
           <Line index={2} />
           <DownloadHome />
+          <Line index={0} />
+          <Version />
         </Container>
         {/* <Container>
           <HomeBanner
@@ -162,6 +152,9 @@ export async function getStaticProps({ locale }) {
   // PAGE INFO
   await queryClient.prefetchQuery(queryKeyDetail("/global"), () =>
     fetchGlobal()
+  );
+  await queryClient.prefetchQuery(queryKeyList("/spfrees"), () =>
+    fetchFreeProducts()
   );
 
   return {

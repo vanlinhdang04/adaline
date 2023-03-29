@@ -54,16 +54,16 @@ class MyDocument extends Document {
 
           {/* <!-- Google tag (gtag.js) --> */}
           <Script
-            src="https://www.googletagmanager.com/gtag/js?id=G-2S0Q9XL3RG"
+            src="https://www.googletagmanager.com/gtag/js?id=UA-32405637-2"
             strategy="afterInteractive"
           ></Script>
           <Script id="google-analytics" strategy="afterInteractive">
             {`
 						window.dataLayer = window.dataLayer || [];
-						function gtag(){window.dataLayer.push(arguments);}
-						gtag('js', new Date());
-
-						gtag('config', 'G-2S0Q9XL3RG');
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'UA-32405637-2');
 						`}
           </Script>
         </Head>
