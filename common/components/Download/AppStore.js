@@ -24,14 +24,16 @@ export default function AppStore({ width, height }) {
     >
       <Box style={{ display: "flex" }}>
         <Image
-          src={appendImageFromAPI(data.attributes.qrcode.data.attributes.url)}
+          src={appendImageFromAPI(
+            data?.attributes?.qrcode?.data?.attributes?.url
+          )}
           alt="QR Download on AppStore"
           width={width * 0.9}
           height={width * 0.9}
           layout="intrinsic"
         />
       </Box>
-      <Link href={data.attributes.download.appStoreURL}>
+      <Link href={data?.attributes?.download?.appStoreURL || "#"}>
         <a target={"_blank"} style={{ lineHeight: "0px", display: "block" }}>
           <Image
             src={imgAppStore}

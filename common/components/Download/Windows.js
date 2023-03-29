@@ -24,14 +24,16 @@ const Windows = ({ width, height }) => {
     >
       <Box style={{ display: "flex" }}>
         <Image
-          src={appendImageFromAPI(data.attributes.qrcode.data.attributes.url)}
+          src={appendImageFromAPI(
+            data?.attributes?.qrcode?.data?.attributes?.url
+          )}
           alt="QR Download on AppStore"
           width={width * 0.9}
           height={width * 0.9}
           layout="intrinsic"
         />
       </Box>
-      <Link href={data.attributes.download.windowsURL} passHref>
+      <Link href={data?.attributes?.download?.windowsURL || "#"} passHref>
         <a target={"_blank"} style={{ lineHeight: "0px" }}>
           <Image
             src={IMG}

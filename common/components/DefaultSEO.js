@@ -35,7 +35,6 @@ function DefaultSEO({ seo }) {
         url: seo?.url
           ? `${process.env.SITE_URL}${seo.url}`
           : process.env.SITE_URL,
-        // url: "https://zenone.com.vn",
         title: seo.title,
         description: seo.description,
         images,
