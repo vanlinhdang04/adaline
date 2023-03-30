@@ -1,8 +1,35 @@
 import { Box, Grid, Text, Title } from "@mantine/core";
+import { FiArrowLeft } from "@react-icons/all-files/fi/FiArrowLeft";
+import { FiArrowRight } from "@react-icons/all-files/fi/FiArrowRight";
 import React from "react";
+import Slider from "react-slick";
 import ClientReview from "../ClientReview";
 
 const Version = () => {
+  const sliderRef = React.useRef();
+
+  const settings = {
+    // fade: true,
+    // dots: true,
+    // infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // adaptiveHeight: true,
+    // prevArrow: <SliderArrowLeft />,
+    // nextArrow: <SliderArrowRight />,
+    // variableWidth: true,
+    // dotsClass: "slick-dots-custom",
+  };
+
+  const next = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const previous = () => {
+    sliderRef.current.slickPrev();
+  };
+
   return (
     <Box pb={70}>
       <Grid>
@@ -50,7 +77,7 @@ const Version = () => {
             >
               Bán hàng & nhà hàng
             </Title>
-            <Box>
+            <Box mb={16}>
               <Text color="var(--color-gray)" size={"1rem"}>
                 Quản lý cửa hàng tạp hoá, Quản lý mỹ phẩm, Quản lý cửa hàng sơn,
                 Quản lý vật liệu xây dựng, Quản lý nhôm kính, Quản lý nhôm thép,
@@ -62,21 +89,49 @@ const Version = () => {
                 quán trà sữa, Quản lý khách sạn
               </Text>
             </Box>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 16,
+              }}
+            >
+              <FiArrowLeft
+                onClick={previous}
+                size={28}
+                color="var(--color-gray)"
+                cursor={"pointer"}
+              />
+              <FiArrowRight
+                onClick={next}
+                size={28}
+                color="var(--color-gray)"
+                cursor={"pointer"}
+              />
+            </Box>
           </Box>
         </Grid.Col>
         <Grid.Col xs={12} md={6}>
           <Box
-            sx={(theme) => ({
-              maxWidth: "100%",
-              display: "flex",
-              justifyContent: "center",
-              [theme.fn.largerThan("md")]: {
-                justifyContent: "right",
-              },
-            })}
+          // sx={(theme) => ({
+          //   width: "100%",
+          //   display: "flex",
+          //   justifyContent: "center",
+          //   [theme.fn.largerThan("md")]: {
+          //     justifyContent: "right",
+          //   },
+          // })}
           >
-            <ClientReview />
+            <Slider {...settings} ref={sliderRef}>
+              <ClientReview key={1} />
+              <ClientReview key={2} />
+              <ClientReview key={3} />
+            </Slider>
           </Box>
+          {/* <Slider>
+            <ClientReview key={1} />
+            <ClientReview key={2} />
+            <ClientReview key={3} />
+          </Slider> */}
         </Grid.Col>
       </Grid>
     </Box>

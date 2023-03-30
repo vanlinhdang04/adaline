@@ -6,12 +6,13 @@ import React from "react";
 const ClientReview = () => {
   return (
     <Box
-      bg={"#fafafd"}
+      // bg={"#fafafd"}
       p={"40px 30px 50px"}
+      m={"0 0 10px 10px"}
       maw={500}
       sx={{
         borderRadius: 50,
-        boxShadow: "0 30px 70px 0 rgba(0,0,0,.07)",
+        boxShadow: "0 8px 10px 0 rgba(0,0,0,.07)",
       }}
     >
       <Title
