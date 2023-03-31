@@ -5,7 +5,7 @@ import { queryKeyList } from "api/queryKeys/queryKeys";
 const DEFAULT_STALE_TIME = 10 * 60 * 1000; // 10min
 
 export const fetchProducts = async (
-  path = "/products",
+  path = "/sanphams",
   params = { populate: "*" },
   options = {}
 ) => {
@@ -14,8 +14,8 @@ export const fetchProducts = async (
 
 export const useFetchProducts = (params = { populate: "*" }, options = {}) => {
   return useQuery(
-    queryKeyList("/products"),
-    () => fetchProducts("/products", params, options),
+    queryKeyList("/sanphams"),
+    () => fetchProducts("/sanphams", params, options),
     {
       staleTime: DEFAULT_STALE_TIME,
     }

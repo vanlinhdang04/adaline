@@ -4,6 +4,7 @@ import BannerHome from "@/common/components/Home/BannerHome";
 import Companion from "@/common/components/Home/Companion";
 import DownloadHome from "@/common/components/Home/DownloadHome";
 import FreeProducts from "@/common/components/Home/FreeProducts";
+import Products from "@/common/components/Home/Products";
 import QA from "@/common/components/Home/QA";
 import SpecialFeatures from "@/common/components/Home/SpecialFeatures";
 import Version from "@/common/components/Home/Version";
@@ -52,16 +53,18 @@ export default function Home() {
           <Line index={0} />
           <Companion />
           <Line index={1} />
+          <Products />
+          <Line index={2} />
           <Advantage />
-          <Line index={2} />
+          <Line index={0} />
           <SpecialFeatures />
-          <Line index={0} />
-          <QA />
           <Line index={1} />
-          <FreeProducts />
+          <QA />
           <Line index={2} />
-          <DownloadHome />
+          <FreeProducts />
           <Line index={0} />
+          <DownloadHome />
+          <Line index={1} />
           <Version />
         </Container>
         {/* <Container>
