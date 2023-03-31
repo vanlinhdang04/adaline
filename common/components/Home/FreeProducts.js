@@ -28,7 +28,7 @@ const FreeProducts = () => {
 
       <Box>
         <Accordion
-          chevron={<BsArrowDownRight color="#8eb943" />}
+          chevron={<BsArrowDownRight color="#1498D5" />}
           styles={(theme) => ({
             item: {
               borderRadius: 13,
@@ -40,7 +40,7 @@ const FreeProducts = () => {
                 background: "#F1FFFE",
               },
               "&[data-active] h5": {
-                color: "#8eb943",
+                color: "#1498D5",
               },
             },
             control: {
@@ -93,7 +93,7 @@ const FreeProducts = () => {
                           },
                           "&:hover": {
                             h5: {
-                              color: "#8eb943",
+                              color: "#1498D5",
                             },
                           },
                         }}
@@ -119,7 +119,7 @@ const FreeProducts = () => {
                         <Link
                           href={`/product/${product.attributes.siteSlug}_${product.id}`}
                         >
-                          <Text underline color="#8eb943">
+                          <Text underline color="#50c594">
                             Xem thêm
                           </Text>
                         </Link>

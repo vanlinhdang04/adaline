@@ -1,3 +1,4 @@
+import { postSubscriber } from "@/api/queryFunctions/subscribers";
 import { postContact } from "@/apis/queryFunctions/contact";
 // import { appAlert } from "@/setup/mantine-provider/notifications";
 import {
@@ -49,7 +50,8 @@ export default function Form({
   const [open, setOpen] = React.useState(false);
   const { locale } = useRouter();
   locale == "vi"
-    ? (title = "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho Adaline")
+    ? (title =
+        "Nếu bạn quan tâm sản phẩm này, hãy để lại thông tin cho Adaline")
     : (title =
         "If you are interested in this product, please leave a message for Adaline");
   const handleClose = () => {
@@ -84,7 +86,7 @@ export default function Form({
     },
   });
 
-  const contactMutation = useMutation(postContact, {
+  const contactMutation = useMutation(postSubscriber, {
     onSuccess: () => {
       setOpen(true);
       // appAlert({
@@ -102,13 +104,6 @@ export default function Form({
             name: name,
             phone: phone,
             email,
-            subscribe_to_product: id,
-            subscribe_to_news: slug,
-            url: window.location.href,
-            vi_tri: position,
-            called: false,
-
-            // ten_san_pham: "Zen Group Tower",
           });
         })}
       >
@@ -321,8 +316,8 @@ export default function Form({
             </Text>
             <Text size={"lg"} weight={400} color={"#001529"} align="center">
               {locale == "vi"
-                ? "Adaline sẽ liên hệ bạn trong 24h"
-                : "Adaline will contact you within 24 hours"}
+                ? "Adaline sẽ liên hệ bạn trong thời gian sớm nhất"
+                : "Adaline will contact you as soon as possible"}
             </Text>
           </Box>
         </Box>

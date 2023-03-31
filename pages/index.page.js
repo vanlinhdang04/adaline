@@ -1,3 +1,4 @@
+import { fetchProducts } from "@/api/queryFunctions/products";
 import DefaultSEO from "@/common/components/DefaultSEO";
 import Advantage from "@/common/components/Home/Advantage";
 import BannerHome from "@/common/components/Home/BannerHome";
@@ -158,6 +159,9 @@ export async function getStaticProps({ locale }) {
   );
   await queryClient.prefetchQuery(queryKeyList("/spfrees"), () =>
     fetchFreeProducts()
+  );
+  await queryClient.prefetchQuery(queryKeyList("/sanphams"), () =>
+    fetchProducts()
   );
 
   return {

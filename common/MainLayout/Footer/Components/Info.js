@@ -1,17 +1,18 @@
 import { useFetchGlobal } from "@/api/queryFunctions/global";
+import { useFetchProducts } from "@/api/queryFunctions/products";
 import { SUB_POSITION } from "@/apis/queryFunctions/subcribePosition";
-import { Box, Grid, Text } from "@mantine/core";
+import { Box, Grid, SimpleGrid, Text } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import arrow from "public/icons/arrow.png";
 import Facebook from "public/icons/Facebook.png";
+import Youtube from "public/icons/Youtube.png";
+import Zalo from "public/icons/Zalo.png";
+import arrow from "public/icons/arrow.png";
 import Home from "public/icons/home.png";
 import Mail from "public/icons/mail.png";
 import Phone from "public/icons/phone.png";
-import Youtube from "public/icons/Youtube.png";
-import Zalo from "public/icons/Zalo.png";
-import logo from "public/images/logo_lite.org.ico";
+import logo from "public/images/footer_logo.ico";
 import useStyles from "../styles";
 import Form from "./Form";
 export default function Info() {
@@ -20,9 +21,11 @@ export default function Info() {
   const { data: global } = useFetchGlobal();
   const { company } = global?.attributes || { company: {} };
 
+  const { data: products } = useFetchProducts();
+
   return (
     <Grid sx={{ width: "100%" }}>
-      <Grid.Col sm={6} md={3.6} sx={{ margin: "13px 0px 0px " }}>
+      <Grid.Col sm={12} md={4} sx={{ margin: "13px 0px 0px " }}>
         <Link href={"/"} passHref>
           <a>
             <Box
@@ -37,7 +40,7 @@ export default function Info() {
                 width={63}
                 layout="intrinsic"
               />
-              <h2 style={{ color: "var(--color-primary)" }}>ADALINE</h2>
+              <h2 style={{ color: "var(--color-white)" }}>ADALINE</h2>
             </Box>
           </a>
         </Link>
@@ -145,109 +148,21 @@ export default function Info() {
           </Text>
         </div>
       </Grid.Col>
-      <Grid.Col sm={6} md={2.4} sx={{ margin: "auto" }}>
-        <InfoTitle> {locale == "vi" ? "Sản phẩm" : "Product"}</InfoTitle>
-
-        <InfoText className={classes.infoText} link={"/san-pham/bat-dong-san"}>
-          {locale == "vi" ? " Bất động sản" : "Real estate"}
-        </InfoText>
-
-        <InfoText
-          className={classes.infoText}
-          // link={"/san-pham/co-phan-zenone"}
-        >
-          {locale == "vi" ? "Cổ phần Zenone" : "Shares of Zenone"}
-        </InfoText>
-        <InfoText
-          className={classes.infoText}
-          // link={"/san-pham/co-phan-startups"}
-        >
-          {locale == "vi" ? "Cổ phần Starups" : "Shares of Startups"}
-        </InfoText>
-        <InfoTitle>{locale == "vi" ? "Hỗ trợ" : "Support"} </InfoTitle>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/ho-tro/ho-tro-khach-hang"}
-          >
-            {locale == "vi" ? "Hỗ trợ khách hàng" : "Customer support"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/ho-tro/huong-dan-su-dung"}
-          >
-            {locale == "vi" ? "Hướng dẫn sử dụng" : "User manual"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/ho-tro/dieu-khoan-su-dung"}
-          >
-            {locale == "vi" ? "Điều khoản sử dụng" : "Terms of use"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/ho-tro/cau-hoi-thuong-gap"}
-          >
-            {locale == "vi"
-              ? "Hỏi đáp thường gặp"
-              : "Frequently asked questions"}
-          </InfoText>
-        </div>
+      <Grid.Col sm={12} md={5} sx={{ margin: "auto" }}>
+        <InfoTitle>Ngành hàng</InfoTitle>
+        <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
+          {products?.map((product, index) => (
+            <InfoText
+              key={index}
+              className={classes.infoText}
+              link={`san-pham/${product.attributes.siteSlug}_${product.id}`}
+            >
+              {product.attributes.siteName}
+            </InfoText>
+          ))}
+        </SimpleGrid>
       </Grid.Col>
-      <Grid.Col sm={6} md={3}>
-        <InfoTitle>
-          {locale == "vi"
-            ? "Chính sách đầu tư/ hợp tác"
-            : "Investment/cooperation policy"}
-        </InfoTitle>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/chinh-sach-dau-tu-hop-tac"}
-            detail={"chinh-sach-dau-tu-bat-dong-san"}
-          >
-            {locale == "vi"
-              ? "Chính sách đầu tư bất động sản"
-              : "Real estate investment policy"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            // link={"/chinh-sach-dau-tu-hop-tac"}
-            // detail={"chinh-sach-dau-tu-co-phan"}
-          >
-            {locale == "vi"
-              ? "Chính sách đầu tư cổ phần"
-              : "Equity investment policy"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            link={"/chinh-sach-dau-tu-hop-tac"}
-            detail={"chinh-sach-gioi-thieu"}
-          >
-            {locale == "vi" ? "Chính sách giới thiệu" : "Referral Policy"}
-          </InfoText>
-        </div>
-        <div>
-          <InfoText
-            className={classes.infoText}
-            // link={"/chinh-sach-dau-tu-hop-tac"}
-            // detail={"chinh-sach-ctv"}
-          >
-            {locale == "vi" ? "Chính sách CTV" : "Contributor policy"}
-          </InfoText>
-        </div>
-      </Grid.Col>
-      <Grid.Col sm={6} md={3}>
+      <Grid.Col sm={12} md={3}>
         <Text size={"sm"} weight={"700"} sx={{ margin: "13px 0px 17px 0px" }}>
           {locale == "vi"
             ? "Để lại thông tin nhận tư vấn miễn phí"

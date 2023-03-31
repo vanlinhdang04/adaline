@@ -1,6 +1,8 @@
 import { useFetchProducts } from "@/api/queryFunctions/products";
+import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import { Box, Center, Skeleton, Stack, ThemeIcon, Title } from "@mantine/core";
 import { RiTShirt2Line } from "@react-icons/all-files/ri/RiTShirt2Line";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import HomeTitle from "../HomeTitle";
@@ -17,11 +19,15 @@ const Products = () => {
       </Center>
 
       <Box
-        sx={{
+        sx={(theme) => ({
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: 32,
-        }}
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 16,
+
+          [theme.fn.largerThan("md")]: {
+            gridTemplateColumns: "repeat(5, 1fr)",
+          },
+        })}
       >
         {isLoading ? (
           <Stack align="center" px={16} py={8}>
@@ -53,13 +59,21 @@ const Products = () => {
                     radius={"100%"}
                     size={60}
                   >
-                    <RiTShirt2Line color="var(--color-primary)" size={30} />
+                    <Image
+                      src={appendImageFromAPI(
+                        product?.attributes?.siteIcon?.data?.attributes.url
+                      )}
+                      width={30}
+                      height={30}
+                    />
+                    {/* <RiTShirt2Line color="var(--color-primary)" size={30} /> */}
                   </ThemeIcon>
                   <Title
                     order={6}
                     color="var(--color-black)"
                     weight={500}
                     size={"1rem"}
+                    align="center"
                   >
                     {product.attributes.siteName}
                   </Title>

@@ -14,13 +14,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import burger from "public/icons/burger.png";
+
+import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
 import iconClose from "public/icons/close_icon.png";
 import iconDownload from "public/icons/download_icon.png";
 import iconSignup from "public/icons/signup_icon.png";
-// import vectorLeft from "public/icons/vector_left.png";
-import imgVectorSubmenu from "public/icons/vector_submenu.png";
-// import logo from "public/images/logo.png";
 import logo from "public/images/logo_lite.org.ico";
 import React from "react";
 import Container from "../Container";
@@ -199,7 +197,10 @@ export default function Header() {
             <div className={classes.sideLeft}>
               <Link href={"/"} passHref>
                 <a>
-                  <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
+                  <Box
+                    display={"flex"}
+                    sx={{ alignItems: "center", userSelect: "none" }}
+                  >
                     <Image
                       src={logo}
                       alt="Adaline"
@@ -216,9 +217,7 @@ export default function Header() {
             <div className={classes.sideRight}>
               <ul className={classes.menu}>
                 <li className={classes.menuItem}>
-                  <Link href="/">
-                    {label?.[locale]?.menu?.home?.label}
-                  </Link>
+                  <Link href="/">{label?.[locale]?.menu?.home?.label}</Link>
                 </li>
                 <li className={classes.menuItem}>
                   <Link href="/san-pham">
@@ -417,18 +416,14 @@ export default function Header() {
       <Container>
         <div className={classes.wrapperMobile}>
           <div onClick={() => setOpenDrawer(true)} style={{ display: "flex" }}>
-            <Image
-              src={burger}
-              alt="burger"
-              priority
-              width={25}
-              height={25}
-              layout="intrinsic"
-            />
+            <GiHamburgerMenu size={25} color="var(--color-primary)" />
           </div>
           <Link href={"/"} passHref>
             <a>
-              <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
+              <Box
+                display={"flex"}
+                sx={{ alignItems: "center", userSelect: "none" }}
+              >
                 <Image
                   src={logo}
                   alt="Adaline"
@@ -459,7 +454,10 @@ export default function Header() {
       >
         <div className={classes.drawer}>
           <Link href={"/"}>
-            <Box display={'flex'} sx={{alignItems: 'center', userSelect: 'none'}}>
+            <Box
+              display={"flex"}
+              sx={{ alignItems: "center", userSelect: "none" }}
+            >
               <Image
                 src={logo}
                 alt="Adaline"
