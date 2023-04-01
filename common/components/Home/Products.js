@@ -9,7 +9,7 @@ import HomeTitle from "../HomeTitle";
 
 const Products = () => {
   const { data, isLoading } = useFetchProducts();
-  console.log("data", data);
+
   return (
     <Box>
       <Center>

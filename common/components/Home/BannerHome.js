@@ -96,6 +96,7 @@ const BannerHome = ({ onClickScroll }) => {
                     width={23}
                     height={23}
                     layout="responsive"
+                    priority
                   />
                 </Box>
               }
@@ -167,6 +168,7 @@ const BannerHome = ({ onClickScroll }) => {
             objectPosition={"50% 100%"}
             //placeholder="blur"
             blurDataURL="https://via.placeholder.com/64"
+            priority
           />
         </Box>
       </Center>

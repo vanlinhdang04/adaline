@@ -45,7 +45,7 @@ export default function Info() {
           </a>
         </Link>
         {/* <Image src={logo} alt="ZenOne" priority height={56} width={127}></Image> */}
-        <Text>{company.name}</Text>
+        <Text>{company?.name}</Text>
         <Text sx={{ paddingBottom: 15 }}>MST: {company?.mst}</Text>
         <div style={{ display: "flex" }}>
           {Boolean(company?.zalo) && (
@@ -108,9 +108,9 @@ export default function Info() {
               width={20}
             ></Image>
           </div>
-          <Text size={16}>{company.address}</Text>
+          <Text size={16}>{company?.address}</Text>
         </div>
-        {Boolean(company.email) && (
+        {Boolean(company?.email) && (
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ width: 20, height: 20, margin: "10px 10px 10px 0" }}>
               <Image
@@ -123,10 +123,10 @@ export default function Info() {
                 width={20}
               ></Image>
             </div>
-            <Link scroll={false} href={`mailto:${company.email}`} passHref>
+            <Link scroll={false} href={`mailto:${company?.email}`} passHref>
               <a target={"_blank"} aria-label="Email">
                 <Text size={16} color="var(--color-white)">
-                  {company.email}
+                  {company?.email}
                 </Text>
               </a>
             </Link>

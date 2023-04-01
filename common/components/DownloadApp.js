@@ -19,15 +19,16 @@ export default function DownloadApp({ banner, isStep = false }) {
         style={{
           display: "flex",
           justifyContent: isMobile ? "space-between" : "flex-start",
+          gap: 16,
         }}
       >
-        <div style={{ marginRight: 16 }}>
+        <div>
           <AppStore
             width={isStep ? 132 : isMobile ? 178 : 160}
             height={isStep ? 39 : isMobile ? 53 : 47}
           />
         </div>
-        <div style={{ marginRight: 16 }}>
+        <div>
           <ChPlay
             width={isStep ? 132 : isMobile ? 178 : 160}
             height={isStep ? 39 : isMobile ? 53 : 47}
@@ -49,7 +50,7 @@ export default function DownloadApp({ banner, isStep = false }) {
           {isLoading && (
             <Image
               src={appendImageFromAPI(
-                data.attributes.qrcode.data.attributes.url
+                data?.attributes?.qrcode?.data?.attributes?.url
               )}
               alt="QR Code"
               width={86}
