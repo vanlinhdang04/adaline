@@ -14,7 +14,7 @@ export const fetchProducts = async (
 
 export const useFetchProducts = (params = { populate: "*" }, options = {}) => {
   return useQuery(
-    queryKeyList("/sanphams"),
+    queryKeyList("/sanphams", params, options),
     () => fetchProducts("/sanphams", params, options),
     {
       staleTime: DEFAULT_STALE_TIME,

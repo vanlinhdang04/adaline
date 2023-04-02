@@ -17,7 +17,7 @@ export const useFetchFreeProducts = (
   options = {}
 ) => {
   return useQuery(
-    queryKeyList("/spfrees"),
+    queryKeyList("/spfrees", params, options),
     () => fetchFreeProducts("/spfrees", params, options),
     {
       staleTime: DEFAULT_STALE_TIME,
