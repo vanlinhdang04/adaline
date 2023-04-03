@@ -1,4 +1,5 @@
 import { useFetchGlobal } from "@/api/queryFunctions/global";
+import placeholderGIF from "@/public/images/placeholder.gif";
 import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import { Box } from "@mantine/core";
 import Image from "next/image";
@@ -28,23 +29,29 @@ export default function ChPlay({ width, height }) {
           width={width * 0.9}
           height={width * 0.9}
           layout="intrinsic"
+          placeholder="blur"
+          blurDataURL={placeholderGIF}
         />
       </Box>
       <Link href={data?.attributes?.download?.googlePlayURL || "#"} passHref>
         <a target={"_blank"} style={{ lineHeight: "0px" }}>
-          <Image
-            src={imgChPlay}
-            alt="AppStore"
-            width={width}
-            height={height}
-            layout="intrinsic"
-            blurDataURL="https://via.placeholder.com/226x66"
-            objectFit="contain"
-            style={{
+          <Box
+            sx={{
               borderRadius: "8px",
               overflow: "hidden",
             }}
-          />
+          >
+            <Image
+              src={imgChPlay}
+              alt="AppStore"
+              width={width}
+              height={height}
+              layout="intrinsic"
+              placeholder="blur"
+              blurDataURL={placeholderGIF}
+              objectFit="contain"
+            />
+          </Box>
         </a>
       </Link>
     </Box>

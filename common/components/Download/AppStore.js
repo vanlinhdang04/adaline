@@ -1,11 +1,9 @@
 import { useFetchGlobal } from "@/api/queryFunctions/global";
-import { useFetchPageInfo } from "@/apis/queryFunctions/pageInfo";
+import placeholderGIF from "@/public/images/placeholder.gif";
 import appendImageFromAPI from "@/utils/appendImageFromAPI";
-import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import { Box } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import imgAppStore from "public/images/appstore.png";
 import React from "react";
 
@@ -31,24 +29,29 @@ export default function AppStore({ width, height }) {
           width={width * 0.9}
           height={width * 0.9}
           layout="intrinsic"
+          placeholder="blur"
+          blurDataURL={placeholderGIF}
         />
       </Box>
       <Link href={data?.attributes?.download?.appStoreURL || "#"}>
         <a target={"_blank"} style={{ lineHeight: "0px", display: "block" }}>
-          <Image
-            src={imgAppStore}
-            alt="AppStore"
-            width={width}
-            height={height}
-            //placeholder="blur"
-            layout="intrinsic"
-            blurDataURL="https://via.placeholder.com/226x66"
-            objectFit="contain"
-            style={{
+          <Box
+            sx={{
               borderRadius: "8px",
               overflow: "hidden",
             }}
-          />
+          >
+            <Image
+              src={imgAppStore}
+              alt="AppStore"
+              width={width}
+              height={height}
+              layout="intrinsic"
+              placeholder="blur"
+              blurDataURL="placeholderGIF"
+              objectFit="contain"
+            />
+          </Box>
         </a>
       </Link>
     </Box>

@@ -1,25 +1,26 @@
-import thumbnailIMG from '@/public/images/thumbnail.avif'
-import { Box, Center, Modal } from '@mantine/core'
-import Image from 'next/image'
-import React from 'react'
-import HomeTitle from '../HomeTitle'
+import placeholderGIF from "@/public/images/placeholder.gif";
+import thumbnailIMG from "@/public/images/thumbnail.avif";
+import { Box, Center, Modal } from "@mantine/core";
+import Image from "next/image";
+import React from "react";
+import HomeTitle from "../HomeTitle";
 
 const VideoHome = () => {
-	const [opened, setOpened] = React.useState(false);
+  const [opened, setOpened] = React.useState(false);
 
   return (
     <Box>
       <Center
-				sx={(theme) => ({
-					[`@media (max-width: ${theme.breakpoints.md}px)`]: {
-						marginBottom: 20,
-					},
-				})}
-			>
-				<HomeTitle style={{ textAlign: "center", maxWidth: 606 }}>
-					Giới thiệu về <span className='company-name'>Adaline</span>
-				</HomeTitle>
-			</Center>
+        sx={(theme) => ({
+          [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+            marginBottom: 20,
+          },
+        })}
+      >
+        <HomeTitle style={{ textAlign: "center", maxWidth: 606 }}>
+          Giới thiệu về <span className="company-name">Adaline</span>
+        </HomeTitle>
+      </Center>
 
       <Box
         sx={(theme) => ({
@@ -31,12 +32,6 @@ const VideoHome = () => {
             marginBottom: 54,
           },
         })}
-        // style={{
-        // 	width: "100%",
-        // 	height: "105%",
-        // 	aspectRatio: "2.14",
-        // 	position: "relative",
-        // }}
       >
         <Box
           sx={(theme) => ({
@@ -72,8 +67,8 @@ const VideoHome = () => {
             alt="Video"
             layout="fill"
             priority
-            //placeholder="blur"
-            blurDataURL={"https://via.placeholder.com/521x502"}
+            placeholder="blur"
+            blurDataURL={placeholderGIF}
             objectFit="cover"
             quality={100}
           />
@@ -162,7 +157,7 @@ const VideoHome = () => {
         ></iframe>
       </Modal>
     </Box>
-  )
-}
+  );
+};
 
-export default VideoHome
+export default VideoHome;

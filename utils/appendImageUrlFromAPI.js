@@ -1,4 +1,4 @@
-import imgDefault from "public/images/loading.gif";
+import imgDefault from "public/images/placeholder.gif";
 export default function appendImageUrlFromAPI({ src, size }) {
   const IMAGE_SIZES = ["x", "s", "m", "l", "2k", "xl"];
   let _src = src;
