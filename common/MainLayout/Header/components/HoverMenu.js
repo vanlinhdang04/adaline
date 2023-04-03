@@ -16,7 +16,7 @@ export default function HoverMenu({ children }) {
           width: 117,
           height: 5,
           margin: "0 auto 16px",
-          background: "#6ED7D3",
+          background: "var(--color-primary)",
           borderRadius: 5,
           // marginTop: 8,
         }}

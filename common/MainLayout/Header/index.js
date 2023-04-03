@@ -15,6 +15,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { useFetchNewsTypes } from "@/api/queryFunctions/news";
+import imgVectorSubmenu from "@/public/icons/vector_submenu.png";
 import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
 import iconClose from "public/icons/close_icon.png";
 import iconDownload from "public/icons/download_icon.png";
@@ -128,6 +130,7 @@ export default function Header() {
   const { push, locale, asPath, pathname } = useRouter();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [openSignup, setOpenSignup] = React.useState(false);
+  const { data: newsType, isLoading } = useFetchNewsTypes();
 
   const label = {
     vi: {
@@ -224,11 +227,11 @@ export default function Header() {
                     {label?.[locale]?.menu?.sanPham?.label}
                   </Link>
                 </li>
-                <li className={classes.menuItem}>
+                {/* <li className={classes.menuItem}>
                   <Link href="/tin-tuc">
                     {label?.[locale]?.menu?.tinTuc?.label}
                   </Link>
-                </li>
+                </li> */}
                 {/* <Popover shadow="md" radius={24}>
                   <Popover.Target>
                     <li className={classes.menuItem}>
@@ -267,7 +270,7 @@ export default function Header() {
                     </HoverMenu>
                   </Popover.Dropdown>
                 </Popover> */}
-                {/* <Popover shadow="md" radius={24}>
+                <Popover shadow="md" radius={24}>
                   <Popover.Target>
                     <li className={classes.menuItem}>
                       <Group align={"center"} spacing={4}>
@@ -286,20 +289,20 @@ export default function Header() {
                   <Popover.Dropdown p={0}>
                     <HoverMenu>
                       <div>
-                        <div className={classes.menuItemSub}>
-                          <Link href={"/tin-tuc/tin-zenone"}>
-                            {label?.[locale]?.menu?.tinTuc?.child[0]}
-                          </Link>
-                        </div>
-                        <div className={classes.menuItemSub}>
-                          <Link href={"/tin-tuc/tin-uu-dai"}>
-                            {label?.[locale]?.menu?.tinTuc?.child[1]}
-                          </Link>
-                        </div>
+                        {!isLoading &&
+                          newsType?.data?.map((item, index) => (
+                            <div className={classes.menuItemSub} key={index}>
+                              <Link
+                                href={`/tin-tuc/${item?.attributes?.slug}?id=${item?.id}`}
+                              >
+                                {item?.attributes?.title}
+                              </Link>
+                            </div>
+                          ))}
                       </div>
                     </HoverMenu>
                   </Popover.Dropdown>
-                </Popover> */}
+                </Popover>
 
                 <li className={classes.menuItem}>
                   <Link href="/gioi-thieu">

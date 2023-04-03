@@ -19,7 +19,7 @@ export default function Info() {
   const { classes } = useStyles();
   const { locale } = useRouter();
   const { data: global } = useFetchGlobal();
-  const { company } = global?.attributes || { company: {} };
+  const { company } = global?.data?.attributes || { company: {} };
 
   const { data: products } = useFetchProducts();
 
@@ -151,7 +151,7 @@ export default function Info() {
       <Grid.Col sm={12} md={5} sx={{ margin: "auto" }}>
         <InfoTitle>Ngành hàng</InfoTitle>
         <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
-          {products?.map((product, index) => (
+          {products?.data?.map((product, index) => (
             <InfoText
               key={index}
               className={classes.infoText}

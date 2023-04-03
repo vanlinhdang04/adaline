@@ -25,7 +25,7 @@ export default function AppStore({ width, height }) {
       <Box style={{ display: "flex" }}>
         <Image
           src={appendImageFromAPI(
-            data?.attributes?.qrcode?.data?.attributes?.url
+            data?.data?.attributes?.qrcode?.data?.attributes?.url
           )}
           alt="QR Download on AppStore"
           width={width * 0.9}

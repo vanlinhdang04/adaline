@@ -8,7 +8,7 @@ import React from "react";
 import HomeTitle from "../HomeTitle";
 
 const Products = () => {
-  const { data, isLoading } = useFetchProducts();
+  const { data: products, isLoading } = useFetchProducts();
 
   return (
     <Box>
@@ -35,7 +35,7 @@ const Products = () => {
             <Skeleton height={16} width="70%" radius="xl" />
           </Stack>
         ) : (
-          data.map((product, index) => (
+          products?.data?.map((product, index) => (
             <Link
               href={`san-pham/${product.attributes.siteSlug}_${product.id}`}
               passHref

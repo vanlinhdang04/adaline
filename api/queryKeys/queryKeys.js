@@ -1,23 +1,16 @@
-export const queryKeyList = (path, urlParamsObject = {}, options = {}) => [
+export const queryKeyList = (path, params = {}, options = {}) => [
   {
     scope: path,
-    params: urlParamsObject,
+    params: params,
     options: options,
     type: "list",
   },
 ];
 
-export const queryKeyDetail = (
-  path,
-  id = "",
-  urlParamsObject = {},
-  options = {}
-) => [
+export const queryKeyDetail = (path, id = "") => [
   {
     scope: path,
-    params: urlParamsObject,
-    options: options,
-    type: "detail",
     id: id,
+    type: "detail",
   },
 ];

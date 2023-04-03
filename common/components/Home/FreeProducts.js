@@ -17,7 +17,7 @@ import React from "react";
 import HomeTitle from "../HomeTitle";
 
 const FreeProducts = () => {
-  const { data } = useFetchFreeProducts();
+  const { data: freeProducts } = useFetchFreeProducts();
 
   return (
     <Box>
@@ -79,8 +79,8 @@ const FreeProducts = () => {
           })}
         >
           <Grid gutter={"md"}>
-            {Boolean(data) &&
-              data.map((product) => (
+            {Boolean(freeProducts?.data?.length) &&
+              freeProducts?.data?.map((product) => (
                 <Grid.Col xs={12} md={6} key={product.id}>
                   <Accordion.Item value={product.attributes.siteName}>
                     <Accordion.Control>

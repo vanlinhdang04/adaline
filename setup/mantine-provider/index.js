@@ -102,14 +102,14 @@ export default function ThemeProvider({ children }) {
             defaultProps: {
               radius: 7,
               fontSize: 16,
-              size: "xl",
-              color: "#ADB4BB",
+              size: "md",
+              color: "var(--color-primary)",
               styles: {
                 item: {
                   margin: "10px 0px",
                   color: "#ADB4BB",
                   "&[data-active=true]": {
-                    backgroundColor: "#1C655E",
+                    backgroundColor: "var(--color-primary)",
                     fontWeight: 700,
                     border: "#3caea4",
                   },
@@ -132,9 +132,9 @@ export default function ThemeProvider({ children }) {
                         onClick={onClick}
                         className={className}
                         disabled={disabled}
-                        style={{ borderColor: "#3caea4" }}
+                        style={{ borderColor: "var(--color-primary)" }}
                       >
-                        <FiArrowLeft color="#3caea4" />
+                        <FiArrowLeft color="var(--color-primary)" />
                       </button>
                     );
                   case "next":
@@ -143,9 +143,9 @@ export default function ThemeProvider({ children }) {
                         onClick={onClick}
                         className={className}
                         disabled={disabled}
-                        style={{ borderColor: "#3caea4" }}
+                        style={{ borderColor: "var(--color-primary)" }}
                       >
-                        <FiArrowRight color="#3caea4" />
+                        <FiArrowRight color="var(--color-primary)" />
                       </button>
                     );
 
