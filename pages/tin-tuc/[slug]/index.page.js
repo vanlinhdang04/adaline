@@ -35,29 +35,37 @@ const NewsTypeDetail = () => {
   } = useRouter();
   const limit = 9;
   const [page, setPage] = React.useState(1);
-  const { data: newsType, isLoading: newsTypeisLoading } = useFetchNewsType(id);
+  // const { data: newsType, isLoading: newsTypeisLoading } = useFetchNewsType(id);
+  const { data: newsTypeList, isLoading: newsTypeisLoading } =
+    useFetchNewsTypes({
+      populate: "*",
+      filters: {
+        slug,
+      },
+    });
+  const newsType = newsTypeList?.data?.[0];
   const { data: newsTypes } = useFetchNewsTypes();
   const {
     data: newsHot,
     isLoading,
     isFetching,
   } = useFetchNews(
-    id && {
+    slug && {
       populate: "*",
       filters: {
         loai_tin_tuc: {
-          id: id,
+          slug: slug,
         },
         hot: true,
       },
     }
   );
   const { data: news, isFetched } = useFetchNews(
-    id && {
+    slug && {
       populate: "*",
       filters: {
         loai_tin_tuc: {
-          id: id,
+          slug: slug,
         },
       },
       pagination: {
@@ -66,14 +74,14 @@ const NewsTypeDetail = () => {
       },
     }
   );
-  console.log("newsHotLoading", isLoading, isFetching);
+  console.log("newsHotLoading", newsType);
 
   const label = {
     vi: {
       breadcrumbs: [
         { href: "/", title: "Trang chủ" },
         { href: "/tin-tuc", title: "Tin tức" },
-        { href: "", title: newsType?.data?.attributes?.title },
+        { href: "", title: newsType?.attributes?.title },
       ],
       ngayTruoc: "ngày trước",
       gioTruoc: "giờ trước",
@@ -87,7 +95,7 @@ const NewsTypeDetail = () => {
       breadcrumbs: [
         { href: "/", title: "Home" },
         { href: "/tin-tuc", title: "News" },
-        { href: "", title: newsType?.data?.attributes?.title },
+        { href: "", title: newsType?.attributes?.title },
       ],
       ngayTruoc: "days before",
       gioTruoc: "hours ago",
@@ -122,7 +130,11 @@ const NewsTypeDetail = () => {
             {/* {JSON.stringify(newsHot?.data)} */}
             {/* {Boolean(newsHot?.data?.length) && (
               )} */}
-            <NewsSlider data={newsHot?.data} isLoading={isLoading} />
+            <NewsSlider
+              data={newsHot?.data}
+              isLoading={isLoading}
+              pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
+            />
           </Box>
 
           <NewsContainer>
@@ -138,11 +150,14 @@ const NewsTypeDetail = () => {
                   {newsTypes?.data?.map((item, k) => (
                     <Link
                       key={k}
-                      href={`/tin-tuc/${item?.attributes?.slug}?id=${item?.id}`}
+                      href={`/tin-tuc/${item?.attributes?.slug}`}
                       passHref
                     >
                       <a>
-                        <NewsTag active={+item?.id === +id} key={k}>
+                        <NewsTag
+                          active={item?.attributes?.slug === slug}
+                          key={k}
+                        >
                           {item?.attributes?.title}
                         </NewsTag>
                       </a>
@@ -157,7 +172,7 @@ const NewsTypeDetail = () => {
                         <Grid.Col xs={6} sm={6} md={4} key={k}>
                           <NewsCard
                             data={item}
-                            pathname={`/tin-tuc/${newsType?.data?.attributes?.slug}`}
+                            pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
                           />
                         </Grid.Col>
                         // eslint-disable-next-line no-mixed-spaces-and-tabs

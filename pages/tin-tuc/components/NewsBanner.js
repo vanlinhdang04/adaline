@@ -10,8 +10,8 @@ import Link from "next/link";
 import shareFb from "public/icons/share_fb.png";
 import shareLink from "public/icons/share_link.png";
 
-export default function NewsBanner({ data, isLoading = false }) {
-  const link = "#";
+export default function NewsBanner({ data, isLoading = false, pathname }) {
+  const link = `${pathname}/${data?.attributes?.siteSlug}`;
 
   const created = dayjs(data?.attributes?.updatedAt);
   const diff =

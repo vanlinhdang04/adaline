@@ -186,6 +186,11 @@ export default function ThemeProvider({ children }) {
               color: "#001529",
             },
           },
+          Text: {
+            defaultProps: {
+              size: "sm",
+            },
+          },
         },
       }}
     >

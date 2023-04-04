@@ -7,7 +7,7 @@ import React from "react";
 import Slider from "react-slick";
 import NewsBanner from "./NewsBanner";
 
-export default function NewsSlider({ data, isLoading = false }) {
+export default function NewsSlider({ data, isLoading = false, pathname }) {
   const settings = {
     fade: true,
     dots: true,
@@ -35,7 +35,9 @@ export default function NewsSlider({ data, isLoading = false }) {
         {isLoading ? (
           <NewsBanner isLoading={isLoading} />
         ) : (
-          data?.map((item, k) => <NewsBanner key={k} data={item} />)
+          data?.map((item, k) => (
+            <NewsBanner key={k} data={item} pathname={pathname} />
+          ))
         )}
       </Slider>
     </Box>

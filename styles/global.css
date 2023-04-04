@@ -24,6 +24,8 @@
 	font-weight: 800;
 } */
 
+@import url("./_blog-details.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -43,6 +45,12 @@
   --color-light: rgba(255, 255, 255, 0.6);
   --color-black: #001529;
   --color-gray: #a0a0bf;
+  --color-danger: #fa5253;
+  --color-info: #25c2e3;
+  --color-success: #50c594;
+  --color-warning: #ff7800;
+
+  --border-color: #e1e8ec;
 
   --transition: all 400ms ease;
   --transition-md: all 600ms;

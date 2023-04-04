@@ -18,7 +18,7 @@ export const useFetchNewsTypes = (params, options = {}) => {
 
   return useQuery(
     queryKeyList("/loai-tin-tucs", params, options),
-    () => fetchNewsTypes(params, options),
+    () => fetchNewsTypes("/loai-tin-tucs", params, options),
     {
       onSuccess: (newsTypes) => {
         newsTypes?.data?.map((newsType) => {

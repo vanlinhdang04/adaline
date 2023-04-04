@@ -292,9 +292,7 @@ export default function Header() {
                         {!isLoading &&
                           newsType?.data?.map((item, index) => (
                             <div className={classes.menuItemSub} key={index}>
-                              <Link
-                                href={`/tin-tuc/${item?.attributes?.slug}?id=${item?.id}`}
-                              >
+                              <Link href={`/tin-tuc/${item?.attributes?.slug}`}>
                                 {item?.attributes?.title}
                               </Link>
                             </div>
