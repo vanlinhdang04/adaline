@@ -3,6 +3,7 @@ import APIProvider from "@/setup/flexbiz-api-provider";
 // import { LocaleProvider } from "@/setup/locale-provider";
 import ThemeProvider from "@/setup/mantine-provider";
 import ReactQueryProvider from "@/setup/react-query";
+import "@/styles/blogview.css";
 import { DefaultSeo } from "next-seo";
 import SEO from "next-seo.config";
 import Script from "next/script";

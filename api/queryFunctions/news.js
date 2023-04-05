@@ -61,13 +61,27 @@ export const useFetchNewsType = (slug) => {
   });
 };
 
-// FETCH TIN-TUC
-export const fetchNews = async (
-  path = "/tin-tucs",
+// ------------------ FETCH TIN-TUC --------------------------
+export const fetchNewsList = async (
   params = { populate: "*" },
   options = {}
 ) => {
-  return await fetchAPI(path, params, options);
+  return await fetchAPI("/tin-tucs", params, options);
+};
+
+export const fetchNews = async (slug, option = {}) => {
+  const data = await fetchAPI(
+    "/tin-tucs",
+    {
+      populate: "*",
+      filters: {
+        siteSlug: { $eq: slug },
+      },
+    },
+    option
+  );
+
+  return data?.data?.[0] || null;
 };
 
 export const useFetchNewsList = (params, options) => {
@@ -75,7 +89,7 @@ export const useFetchNewsList = (params, options) => {
 
   return useQuery(
     newsKeys.list(params, options),
-    () => fetchNews("/tin-tucs", params, options),
+    () => fetchNewsList(params, options),
     {
       enabled: !!params,
       onSuccess: (news) => {
@@ -88,6 +102,13 @@ export const useFetchNewsList = (params, options) => {
       },
     }
   );
+};
+
+export const useFetchNews = (slug) => {
+  return useQuery(newsKeys.detail(slug), () => fetchNews(slug), {
+    enabled: !!slug,
+    staleTime: STALE_TIME,
+  });
 };
 
 // export const useFetchNews

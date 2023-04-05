@@ -43,7 +43,7 @@
   --color-primary-variant: rgba(20, 152, 213, 0.4);
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
-  --color-black: #001529;
+  --color-black: #2a345f;
   --color-gray: #a0a0bf;
   --color-danger: #fa5253;
   --color-info: #25c2e3;
@@ -51,6 +51,8 @@
   --color-warning: #ff7800;
 
   --border-color: #e1e8ec;
+
+  --text-heading: #2a345f;
 
   --transition: all 400ms ease;
   --transition-md: all 600ms;
@@ -69,6 +71,7 @@ body {
   font-family: "Roboto", sans-serif !important;
   background: var(--color-bg);
   color: var(--color-black);
+  font-size: 1rem;
   /* overflow-x: hidden; */
 }
 

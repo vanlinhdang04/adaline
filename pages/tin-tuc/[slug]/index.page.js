@@ -6,28 +6,18 @@ import {
   useFetchNewsTypes,
 } from "@/api/queryFunctions/news";
 import { newsTypeKeys } from "@/api/queryKeys/newsTypeKeys";
-import { queryKeyDetail, queryKeyList } from "@/api/queryKeys/queryKeys";
 import Container, { NewsContainer } from "@/common/MainLayout/Container";
 import AppBreadcrumbs from "@/common/components/Breadcrumbs";
 import DefaultSEO from "@/common/components/DefaultSEO";
 import DownloadHome from "@/common/components/Home/DownloadHome";
 import HomeTitle from "@/common/components/HomeTitle";
 import Line from "@/common/components/Line";
-import {
-  Box,
-  Grid,
-  Group,
-  Pagination,
-  Skeleton,
-  Stack,
-  Text,
-} from "@mantine/core";
+import { Box, Grid, Group, Pagination, Stack } from "@mantine/core";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import DetailTitle from "../components/DetailTitle";
 import NewsCard from "../components/NewsCard";
 import NewsSlider from "../components/NewsSlider";
 import NewsTag from "../components/NewsTag";
@@ -43,11 +33,7 @@ const NewsTypeDetail = () => {
   const { data: newsType, isLoading: newsTypeLoading } = useFetchNewsType(slug);
   // console.log("newsType", newsType);
   const { data: newsTypes } = useFetchNewsTypes();
-  const {
-    data: newsHot,
-    isLoading,
-    isFetching,
-  } = useFetchNewsList(
+  const { data: newsHot, isLoading } = useFetchNewsList(
     slug && {
       populate: "*",
       filters: {
@@ -72,6 +58,7 @@ const NewsTypeDetail = () => {
       },
     }
   );
+  console.log("news", news);
 
   const label = {
     vi: {
@@ -161,7 +148,7 @@ const NewsTypeDetail = () => {
               </Box>
               <Box sx={{ width: "100%" }} my={15}>
                 <Grid>
-                  {Boolean(news?.data?.length)
+                  {news?.data?.length
                     ? news?.data?.map((item, k) => (
                         <Grid.Col xs={6} sm={6} md={4} key={k}>
                           <NewsCard
@@ -180,7 +167,7 @@ const NewsTypeDetail = () => {
                         ))}
                 </Grid>
               </Box>
-              {isFetched && !Boolean(news?.data?.length) ? (
+              {isFetched && !news?.data?.length ? (
                 <Box>{label?.[locale]?.noNews}</Box>
               ) : (
                 <Pagination

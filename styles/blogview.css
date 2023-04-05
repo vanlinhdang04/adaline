@@ -1,0 +1,44 @@
+.blog-container {
+  color: var(--color-gray);
+  line-height: 1.75;
+}
+
+.blog-container p,
+.blog-container ul,
+.blog-container ol {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.blog-container h1,
+.blog-container h2,
+.blog-container h3,
+.blog-container h4,
+.blog-container h5,
+.blog-container h6,
+.blog-container a:hover {
+  color: var(--text-heading);
+}
+
+.blog-container h1,
+.blog-container h2 {
+  font-weight: 700;
+  line-height: 1.75;
+}
+.blog-container h3,
+.blog-container h4,
+.blog-container h5,
+.blog-container h5 {
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.blog-container img,
+.blog-container figure {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}

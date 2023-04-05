@@ -31,7 +31,7 @@ export default function ThemeProvider({ children }) {
             "#A8EFEB", //5
           ],
           neutral: [
-            "#001529", //0
+            "#2a345f", //0
             "#333333", //1
             "#414141", //2
             "#ADB4BB", //3
@@ -72,11 +72,11 @@ export default function ThemeProvider({ children }) {
         // typo
         fontFamily: "Roboto",
         fontSizes: {
-          xs: 14,
+          xs: 12,
           sm: 16,
-          md: 18,
-          lg: 20,
-          xl: 24,
+          md: 20,
+          lg: 24,
+          xl: 28,
         },
         breakpoints: {
           xs: 0,
@@ -89,13 +89,14 @@ export default function ThemeProvider({ children }) {
           fontFamily: "Roboto",
           fontWeight: 700,
           sizes: {
-            h1: { fontSize: 36 },
+            h1: { fontSize: 28 },
             h2: { fontSize: 24 },
             h3: { fontSize: 20 },
-            h4: { fontSize: 18 },
-            h5: { fontSize: 16 },
-            h6: { fontSize: 14 },
+            h4: { fontSize: 16 },
+            h5: { fontSize: 12 },
+            h6: { fontSize: 8 },
           },
+          color: "var(--text-heading)",
         },
         components: {
           Pagination: {
