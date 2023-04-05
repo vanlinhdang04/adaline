@@ -14,7 +14,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
-          {process.env.NODE_ENV === "production" && (
+          {/* {process.env.NODE_ENV === "production" && (
             <Script
               id="facebook-chat"
               strategy="lazyOnload"
@@ -44,7 +44,7 @@ class MyDocument extends Document {
                     `,
               }}
             />
-          )}
+          )} */}
           {process.env.NODE_ENV === "production" && (
             <meta
               name="google-site-verification"
