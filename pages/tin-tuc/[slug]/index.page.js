@@ -1,7 +1,7 @@
 import {
   fetchNewsType,
   fetchNewsTypes,
-  useFetchNews,
+  useFetchNewsList,
   useFetchNewsType,
   useFetchNewsTypes,
 } from "@/api/queryFunctions/news";
@@ -42,36 +42,36 @@ const NewsTypeDetail = () => {
 
   const { data: newsType, isLoading: newsTypeLoading } = useFetchNewsType(slug);
   // console.log("newsType", newsType);
-  // const { data: newsTypes } = useFetchNewsTypes();
-  // const {
-  //   data: newsHot,
-  //   isLoading,
-  //   isFetching,
-  // } = useFetchNews(
-  //   slug && {
-  //     populate: "*",
-  //     filters: {
-  //       loai_tin_tuc: {
-  //         slug: slug,
-  //       },
-  //       hot: true,
-  //     },
-  //   }
-  // );
-  // const { data: news, isFetched } = useFetchNews(
-  //   slug && {
-  //     populate: "*",
-  //     filters: {
-  //       loai_tin_tuc: {
-  //         slug: slug,
-  //       },
-  //     },
-  //     pagination: {
-  //       page: page,
-  //       pageSize: limit,
-  //     },
-  //   }
-  // );
+  const { data: newsTypes } = useFetchNewsTypes();
+  const {
+    data: newsHot,
+    isLoading,
+    isFetching,
+  } = useFetchNewsList(
+    slug && {
+      populate: "*",
+      filters: {
+        loai_tin_tuc: {
+          slug: slug,
+        },
+        hot: true,
+      },
+    }
+  );
+  const { data: news, isFetched } = useFetchNewsList(
+    slug && {
+      populate: "*",
+      filters: {
+        loai_tin_tuc: {
+          slug: slug,
+        },
+      },
+      pagination: {
+        page: page,
+        pageSize: limit,
+      },
+    }
+  );
 
   const label = {
     vi: {
@@ -114,7 +114,7 @@ const NewsTypeDetail = () => {
             items={label?.[locale]?.breadcrumbs}
             isLoading={newsTypeLoading}
           />
-          {/* <Box
+          <Box
             sx={(theme) => ({
               width: "100%",
               padding: "30px 0 0",
@@ -129,9 +129,9 @@ const NewsTypeDetail = () => {
               isLoading={isLoading}
               pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
             />
-          </Box> */}
+          </Box>
 
-          {/* <NewsContainer>
+          <NewsContainer>
             <Line index={0} />
             <Stack align={"center"}>
               <Box>
@@ -190,7 +190,7 @@ const NewsTypeDetail = () => {
                 />
               )}
             </Stack>
-          </NewsContainer> */}
+          </NewsContainer>
 
           <Line index={1} />
           <DownloadHome />

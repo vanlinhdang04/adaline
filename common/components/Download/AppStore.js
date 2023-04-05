@@ -30,7 +30,7 @@ export default function AppStore({ width, height }) {
           height={width * 0.9}
           layout="intrinsic"
           placeholder="blur"
-          blurDataURL={placeholderGIF}
+          blurDataURL={placeholderGIF.src}
         />
       </Box>
       <Link href={data?.attributes?.download?.appStoreURL || "#"}>
@@ -48,7 +48,7 @@ export default function AppStore({ width, height }) {
               height={height}
               layout="intrinsic"
               placeholder="blur"
-              blurDataURL={placeholderGIF}
+              blurDataURL={placeholderGIF.src}
               objectFit="contain"
             />
           </Box>

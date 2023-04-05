@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchAPI } from "api/api";
+import { newsKeys } from "../queryKeys/newsKeys";
 import { newsTypeKeys } from "../queryKeys/newsTypeKeys";
 import { queryKeyDetail, queryKeyList } from "./../queryKeys/queryKeys";
 
@@ -25,7 +26,7 @@ export const fetchNewsType = async (slug, options = {}) => {
     },
     options
   );
-  return data?.data?.[0];
+  return data?.data?.[0] || null;
 };
 
 export const useFetchNewsTypes = (
@@ -42,7 +43,7 @@ export const useFetchNewsTypes = (
     {
       onSuccess: (newsTypes) => {
         newsTypes?.data?.map((newsType) => {
-          queryClient.setQueriesData(
+          queryClient.setQueryData(
             newsTypeKeys.detail(newsType?.attributes?.slug),
             newsType
           );
@@ -69,19 +70,24 @@ export const fetchNews = async (
   return await fetchAPI(path, params, options);
 };
 
-export const useFetchNews = (params, options) => {
+export const useFetchNewsList = (params, options) => {
   const queryClient = useQueryClient();
 
   return useQuery(
-    queryKeyList("/tin-tucs", params, options),
+    newsKeys.list(params, options),
     () => fetchNews("/tin-tucs", params, options),
     {
       enabled: !!params,
       onSuccess: (news) => {
         news?.data?.map((newsItem) => {
-          queryClient.setQueriesData(queryKeyDetail("/tin-tucs", newsItem?.id));
+          queryClient.setQueryData(
+            newsKeys.detail(newsItem?.attributes?.siteSlug),
+            newsItem
+          );
         });
       },
     }
   );
 };
+
+// export const useFetchNews

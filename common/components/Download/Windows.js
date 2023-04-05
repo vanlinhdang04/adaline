@@ -35,7 +35,7 @@ const Windows = ({ width, height }) => {
               height={width * 0.9}
               layout="intrinsic"
               placeholder="blur"
-              blurDataURL={placeholderGIF}
+              blurDataURL={placeholderGIF.src}
             />
           </a>
         </Link>
@@ -55,7 +55,7 @@ const Windows = ({ width, height }) => {
               height={height}
               layout="intrinsic"
               placeholder="blur"
-              blurDataURL={placeholderGIF}
+              blurDataURL={placeholderGIF.src}
               objectFit="contain"
             />
           </Box>

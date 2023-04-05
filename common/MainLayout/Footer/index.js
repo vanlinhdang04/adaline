@@ -33,13 +33,13 @@ export default function Footer() {
             },
           })}
         >
-          <Image
+          {/* <Image
             src={footerbg}
             alt={"bg"}
             layout="fill"
             objectFit="cover"
             objectPosition={"right"}
-          />
+          /> */}
           {/* <Image src={footerbg} alt={"bg"} layout="fill" objectFit="cover" /> */}
         </Box>
       </Box>
