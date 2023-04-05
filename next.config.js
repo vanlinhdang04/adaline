@@ -53,20 +53,20 @@ const nextConfig = {
     ENABLE_MOCK_USER_SIGNUP: false,
   },
   productionBrowserSourceMaps: true,
-  async redirects() {
-    return [
-      {
-        source: "/tin-tuc",
-        destination: "/tin-tuc/tin-zenone",
-        permanent: true,
-      },
-      {
-        source: "/san-pham",
-        destination: "/san-pham/bat-dong-san",
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/tin-tuc",
+  //       destination: "/tin-tuc/tin-zenone",
+  //       permanent: true,
+  //     },
+  //     {
+  //       source: "/san-pham",
+  //       destination: "/san-pham/bat-dong-san",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
   // async rewrites() {
   //   return [];
   // },

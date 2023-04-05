@@ -1,3 +1,4 @@
+import placeholderGIF from "@/public/images/placeholder.gif";
 import { Box, Center, Grid, List, MediaQuery, Title } from "@mantine/core";
 import Image from "next/image";
 import ArrowDownGIF from "public/icons/down_arrows.gif";
@@ -96,7 +97,6 @@ const BannerHome = ({ onClickScroll }) => {
                     width={23}
                     height={23}
                     layout="responsive"
-                    priority
                   />
                 </Box>
               }
@@ -166,9 +166,9 @@ const BannerHome = ({ onClickScroll }) => {
             height={56}
             objectFit="cover"
             objectPosition={"50% 100%"}
-            //placeholder="blur"
-            blurDataURL="https://via.placeholder.com/64"
             priority
+            placeholder="blur"
+            blurDataURL={placeholderGIF}
           />
         </Box>
       </Center>

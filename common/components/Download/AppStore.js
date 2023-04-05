@@ -1,10 +1,10 @@
 import { useFetchGlobal } from "@/api/queryFunctions/global";
+import imgAppStore from "@/public/images/appstore.png";
 import placeholderGIF from "@/public/images/placeholder.gif";
 import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import { Box } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
-import imgAppStore from "public/images/appstore.png";
 import React from "react";
 
 export default function AppStore({ width, height }) {
@@ -48,7 +48,7 @@ export default function AppStore({ width, height }) {
               height={height}
               layout="intrinsic"
               placeholder="blur"
-              blurDataURL="placeholderGIF"
+              blurDataURL={placeholderGIF}
               objectFit="contain"
             />
           </Box>

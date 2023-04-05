@@ -1,44 +1,63 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchAPI } from "api/api";
+import { newsTypeKeys } from "../queryKeys/newsTypeKeys";
 import { queryKeyDetail, queryKeyList } from "./../queryKeys/queryKeys";
+
+const STALE_TIME = 60 * 10 * 10 * 1000;
 
 // FETCH LOAI-TIN-TUC
 export const fetchNewsTypes = async (
-  path = "/loai-tin-tucs",
   params = {
     populate: "*",
   },
   options = {}
 ) => {
-  return await fetchAPI(path, params, options);
+  return await fetchAPI("/loai-tin-tucs", params, options);
+};
+export const fetchNewsType = async (slug, options = {}) => {
+  const data = await fetchAPI(
+    `/loai-tin-tucs`,
+    {
+      populate: "*",
+      filters: {
+        slug: { $eq: slug },
+      },
+    },
+    options
+  );
+  return data?.data?.[0];
 };
 
-export const useFetchNewsTypes = (params, options = {}) => {
+export const useFetchNewsTypes = (
+  params = {
+    populate: "*",
+  },
+  options = {}
+) => {
   const queryClient = useQueryClient();
 
   return useQuery(
-    queryKeyList("/loai-tin-tucs", params, options),
-    () => fetchNewsTypes("/loai-tin-tucs", params, options),
+    newsTypeKeys.list(params, options),
+    () => fetchNewsTypes(params, options),
     {
       onSuccess: (newsTypes) => {
         newsTypes?.data?.map((newsType) => {
           queryClient.setQueriesData(
-            queryKeyDetail("/loai-tin-tucs", newsType?.id)
+            newsTypeKeys.detail(newsType?.attributes?.slug),
+            newsType
           );
         });
       },
+      staleTime: STALE_TIME,
     }
   );
 };
 
-export const useFetchNewsType = (id) => {
-  return useQuery(
-    queryKeyDetail("/loai-tin-tucs", id),
-    () => fetchNewsTypes(`/loai-tin-tucs/${id}`),
-    {
-      enabled: !!id,
-    }
-  );
+export const useFetchNewsType = (slug) => {
+  return useQuery(newsTypeKeys.detail(slug), () => fetchNewsType(slug), {
+    enabled: !!slug,
+    staleTime: STALE_TIME,
+  });
 };
 
 // FETCH TIN-TUC

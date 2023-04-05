@@ -1,8 +1,12 @@
 import {
+  fetchNewsType,
+  fetchNewsTypes,
   useFetchNews,
   useFetchNewsType,
   useFetchNewsTypes,
 } from "@/api/queryFunctions/news";
+import { newsTypeKeys } from "@/api/queryKeys/newsTypeKeys";
+import { queryKeyDetail, queryKeyList } from "@/api/queryKeys/queryKeys";
 import Container, { NewsContainer } from "@/common/MainLayout/Container";
 import AppBreadcrumbs from "@/common/components/Breadcrumbs";
 import DefaultSEO from "@/common/components/DefaultSEO";
@@ -18,6 +22,7 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -29,52 +34,44 @@ import NewsTag from "../components/NewsTag";
 
 const NewsTypeDetail = () => {
   const {
-    query: { slug, id },
+    query: { slug },
     locale,
-    asPath,
   } = useRouter();
   const limit = 9;
   const [page, setPage] = React.useState(1);
-  // const { data: newsType, isLoading: newsTypeisLoading } = useFetchNewsType(id);
-  const { data: newsTypeList, isLoading: newsTypeisLoading } =
-    useFetchNewsTypes({
-      populate: "*",
-      filters: {
-        slug,
-      },
-    });
-  const newsType = newsTypeList?.data?.[0];
-  const { data: newsTypes } = useFetchNewsTypes();
-  const {
-    data: newsHot,
-    isLoading,
-    isFetching,
-  } = useFetchNews(
-    slug && {
-      populate: "*",
-      filters: {
-        loai_tin_tuc: {
-          slug: slug,
-        },
-        hot: true,
-      },
-    }
-  );
-  const { data: news, isFetched } = useFetchNews(
-    slug && {
-      populate: "*",
-      filters: {
-        loai_tin_tuc: {
-          slug: slug,
-        },
-      },
-      pagination: {
-        page: page,
-        pageSize: limit,
-      },
-    }
-  );
-  console.log("newsHotLoading", newsType);
+
+  const { data: newsType, isLoading: newsTypeLoading } = useFetchNewsType(slug);
+  // console.log("newsType", newsType);
+  // const { data: newsTypes } = useFetchNewsTypes();
+  // const {
+  //   data: newsHot,
+  //   isLoading,
+  //   isFetching,
+  // } = useFetchNews(
+  //   slug && {
+  //     populate: "*",
+  //     filters: {
+  //       loai_tin_tuc: {
+  //         slug: slug,
+  //       },
+  //       hot: true,
+  //     },
+  //   }
+  // );
+  // const { data: news, isFetched } = useFetchNews(
+  //   slug && {
+  //     populate: "*",
+  //     filters: {
+  //       loai_tin_tuc: {
+  //         slug: slug,
+  //       },
+  //     },
+  //     pagination: {
+  //       page: page,
+  //       pageSize: limit,
+  //     },
+  //   }
+  // );
 
   const label = {
     vi: {
@@ -115,9 +112,9 @@ const NewsTypeDetail = () => {
         <Box pt={20}>
           <AppBreadcrumbs
             items={label?.[locale]?.breadcrumbs}
-            isLoading={newsTypeisLoading}
+            isLoading={newsTypeLoading}
           />
-          <Box
+          {/* <Box
             sx={(theme) => ({
               width: "100%",
               padding: "30px 0 0",
@@ -127,17 +124,14 @@ const NewsTypeDetail = () => {
               },
             })}
           >
-            {/* {JSON.stringify(newsHot?.data)} */}
-            {/* {Boolean(newsHot?.data?.length) && (
-              )} */}
             <NewsSlider
               data={newsHot?.data}
               isLoading={isLoading}
               pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
             />
-          </Box>
+          </Box> */}
 
-          <NewsContainer>
+          {/* <NewsContainer>
             <Line index={0} />
             <Stack align={"center"}>
               <Box>
@@ -196,7 +190,7 @@ const NewsTypeDetail = () => {
                 />
               )}
             </Stack>
-          </NewsContainer>
+          </NewsContainer> */}
 
           <Line index={1} />
           <DownloadHome />
@@ -205,5 +199,38 @@ const NewsTypeDetail = () => {
     </Box>
   );
 };
+
+export async function getStaticPaths() {
+  let paths = [];
+
+  const newsTypes = await fetchNewsTypes();
+
+  (newsTypes?.data || []).map((type) => {
+    paths.push({
+      params: { slug: type?.attributes?.slug },
+    });
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const slug = params?.slug;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(newsTypeKeys.detail(slug), () =>
+    fetchNewsType(slug)
+  );
+
+  return {
+    props: {
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+    },
+    revalidate: 60,
+  };
+}
 
 export default NewsTypeDetail;
