@@ -15,6 +15,8 @@ const nextConfig = {
       "https://admin.zenone.com.vn/",
       "via.placeholder.com",
       "cms.adaline.app",
+      "https://cms.adaline.app",
+      // process.env.STRAPI_ASSETS_BASE_URL,
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     formats: ["image/avif", "image/webp"],
@@ -25,6 +27,8 @@ const nextConfig = {
   },
   env: {
     NEXT_PUBLIC_STRAPI_API_URL: "https://cms.adaline.app",
+    STRAPI_ASSETS_BASE_URL: "https://cms.adaline.app",
+
     SITE_URL: "https://zenone.com.vn",
     referral_url: "https://referral.zenone.com.vn",
     server_url: "https://api.flexzen.app",

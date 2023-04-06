@@ -2,9 +2,9 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchAPI } from "api/api";
 import { newsKeys } from "../queryKeys/newsKeys";
 import { newsTypeKeys } from "../queryKeys/newsTypeKeys";
-import { queryKeyDetail, queryKeyList } from "./../queryKeys/queryKeys";
 
 const STALE_TIME = 60 * 10 * 10 * 1000;
+const STALE_TIME_NEWS = 60 * 10 * 1000;
 
 // FETCH LOAI-TIN-TUC
 export const fetchNewsTypes = async (
@@ -92,6 +92,7 @@ export const useFetchNewsList = (params, options) => {
     () => fetchNewsList(params, options),
     {
       enabled: !!params,
+      staleTime: STALE_TIME_NEWS,
       onSuccess: (news) => {
         news?.data?.map((newsItem) => {
           queryClient.setQueryData(
@@ -107,7 +108,7 @@ export const useFetchNewsList = (params, options) => {
 export const useFetchNews = (slug) => {
   return useQuery(newsKeys.detail(slug), () => fetchNews(slug), {
     enabled: !!slug,
-    staleTime: STALE_TIME,
+    staleTime: STALE_TIME_NEWS,
   });
 };
 

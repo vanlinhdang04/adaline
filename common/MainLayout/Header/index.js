@@ -1,6 +1,6 @@
 import { SUB_POSITION } from "@/apis/queryFunctions/subcribePosition";
 import DownloadApp from "@/common/components/DownloadApp";
-import linkChangeLocale from "@/utils/linkChangeLocale";
+// import linkChangeLocale from "@/utils/linkChangeLocale";
 import {
   Box,
   createStyles,
@@ -8,7 +8,6 @@ import {
   Group,
   Modal,
   Popover,
-  SegmentedControl,
   Text,
 } from "@mantine/core";
 import Image from "next/image";
@@ -16,8 +15,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { useFetchNewsTypes } from "@/api/queryFunctions/news";
-import imgVectorSubmenu from "@/public/icons/vector_submenu.png";
 import { GiHamburgerMenu } from "@react-icons/all-files/gi/GiHamburgerMenu";
+import { GoTriangleDown } from "@react-icons/all-files/go/GoTriangleDown";
 import iconClose from "public/icons/close_icon.png";
 import iconDownload from "public/icons/download_icon.png";
 import iconSignup from "public/icons/signup_icon.png";
@@ -71,12 +70,13 @@ const useStyles = createStyles((theme) => ({
     marginLeft: "36px",
     listStyleType: "none",
 
-    fontSize: "15px",
+    fontSize: "1rem",
     fontWeight: 600,
-    lineHeight: "17px",
+    lineHeight: "1.75",
     letterSpacing: "0em",
     textAlign: "center",
     cursor: "pointer",
+    color: "var(--color-black)",
 
     "& a": {
       color: theme.colors.neutral[0],
@@ -127,7 +127,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function Header() {
   const { classes } = useStyles();
-  const { push, locale, asPath, pathname } = useRouter();
+  const { locale, asPath } = useRouter();
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [openSignup, setOpenSignup] = React.useState(false);
   const { data: newsType, isLoading } = useFetchNewsTypes();
@@ -274,15 +274,10 @@ export default function Header() {
                   <Popover.Target>
                     <li className={classes.menuItem}>
                       <Group align={"center"} spacing={4}>
-                        <div>{label?.[locale]?.menu?.tinTuc?.label}</div>
-                        <div>
-                          <Image
-                            src={imgVectorSubmenu}
-                            alt="vector submenu"
-                            width={6}
-                            height={6}
-                          />
-                        </div>
+                        <Text color="var(--color-black)">
+                          {label?.[locale]?.menu?.tinTuc?.label}
+                        </Text>
+                        <GoTriangleDown color="var(--color-black)" />
                       </Group>
                     </li>
                   </Popover.Target>

@@ -1,6 +1,7 @@
 import { useFetchNews } from "@/api/queryFunctions/news";
 import Container from "@/common/MainLayout/Container";
 import BlogDetails from "@/common/components/Blog/BlogDetails";
+import BlogSideBar from "@/common/components/Blog/BlogSideBar";
 import { Box, Grid } from "@mantine/core";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,16 +12,21 @@ const NewsDetail = () => {
   } = useRouter();
 
   const { data } = useFetchNews(slugNews);
-  console.log("data", data);
+
+  React.useEffect(() => {
+    console.log("onLoad");
+  }, []);
 
   return (
-    <Box bg={"#fafafd"} pt={30}>
+    <Box bg={"#fafafd"} pt={30} className="blog-container">
       <Container>
-        <Grid>
-          <Grid.Col sm={12} lg={8}>
+        <Grid gutter={24}>
+          <Grid.Col sm={12} md={8}>
             <BlogDetails data={data} />
           </Grid.Col>
-          <Grid.Col sm={12} lg={4}></Grid.Col>
+          <Grid.Col sm={12} md={4}>
+            <BlogSideBar data={data} />
+          </Grid.Col>
         </Grid>
       </Container>
     </Box>

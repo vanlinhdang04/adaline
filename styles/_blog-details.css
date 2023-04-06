@@ -29,14 +29,14 @@
   z-index: 1;
 }
 
-.blog-content figure {
+/* .blog-content figure {
   position: absolute;
   top: 50%;
   right: 40px;
   z-index: -1;
 
   transform: translateY(-50%);
-}
+} */
 
 .blog-content .text-body:hover {
   color: var(--color-danger) !important;
@@ -80,6 +80,22 @@
 }
 .comment-form-area .form-control {
   background: var(--color-white);
+}
+
+/* WIDGET BOX */
+.widget-box {
+  padding: 30px;
+  background: var(--color-white);
+}
+
+.widget-box .line {
+  position: relative;
+  margin-right: 15px;
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: #50c594;
+  vertical-align: middle;
 }
 
 @media (max-width: 767px) {

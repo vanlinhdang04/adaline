@@ -10,6 +10,7 @@ import Script from "next/script";
 import "setimmediate";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import "styles/ckeditor5.css";
 import "styles/global.css";
 import "styles/reset.css";
 import "styles/verifyOtpForm.css";
