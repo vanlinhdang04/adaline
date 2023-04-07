@@ -107,3 +107,27 @@
   line-height: 1.5;
   font-weight: 500;
 }
+
+.js-toc li a {
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  line-height: 1.75;
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  /* padding: 0px 10px; */
+  max-height: 100px;
+}
+
+.toc-list {
+  padding-left: 0;
+}
+
+.toc-list ol {
+  padding-left: 10px;
+  max-height: 100px;
+}
+
+.js-toc .is-active-link {
+  color: var(--color-primary);
+}

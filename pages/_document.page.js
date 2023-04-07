@@ -14,6 +14,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css"
+          ></link>
           {/* {process.env.NODE_ENV === "production" && (
             <Script
               id="facebook-chat"

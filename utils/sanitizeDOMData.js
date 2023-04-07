@@ -3,11 +3,13 @@ import parse from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 // import Image from "next/future/image";
+import { uid } from "uid";
 import appendImageFromAPI from "./appendImageFromAPI";
-import strapiAssetsLoader from "./strapiAssetsLoader";
+import slugify from "./slugifyString";
+// import strapiAssetsLoader from "./strapiAssetsLoader";
 
 const parseOptions = {
-  replace: ({ attribs, name }) => {
+  replace: ({ attribs, name, children }) => {
     if (!attribs) {
       return;
     }
@@ -30,6 +32,17 @@ const parseOptions = {
           />
         </Box>
       );
+    }
+    if (
+      name === "h1" ||
+      name === "h2" ||
+      name === "h3" ||
+      name === "h4" ||
+      name === "h5" ||
+      name === "h6"
+    ) {
+      console.log(name, children[0]?.data, attribs);
+      attribs.id = slugify(children[0]?.data) + "-" + uid();
     }
     // if (name === "figure") {
     //   return (

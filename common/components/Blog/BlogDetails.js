@@ -45,7 +45,9 @@ const BlogDetails = ({ data }) => {
         </Group>
         <Box className="blog-container">
           {/* ------ body ------- */}
-          {sanitizeDOMData(data?.attributes?.siteBody)}
+          <Box className="blog-body">
+            {sanitizeDOMData(data?.attributes?.siteBody)}
+          </Box>
 
           <Grid justify="space-between">
             <Grid.Col xs={12} sm={6}>
