@@ -5,7 +5,7 @@ import RecentPostItem from "./RecentPostItem";
 
 const RecentPost = () => {
   const { data: recentPosts } = useFetchNewsList({
-    populate: ["siteName", "siteIcon"],
+    populate: ["siteName", "siteIcon", "loai_tin_tuc"],
     sort: ["createdAt"],
     pagination: {
       page: 1,

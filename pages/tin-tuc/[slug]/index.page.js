@@ -14,7 +14,6 @@ import HomeTitle from "@/common/components/HomeTitle";
 import Line from "@/common/components/Line";
 import { Box, Grid, Group, Pagination, Stack } from "@mantine/core";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -58,7 +57,6 @@ const NewsTypeDetail = () => {
       },
     }
   );
-  console.log("news", news);
 
   const label = {
     vi: {
@@ -200,7 +198,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 

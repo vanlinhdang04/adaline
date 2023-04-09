@@ -3,7 +3,8 @@ import parse from "html-react-parser";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 // import Image from "next/future/image";
-import { uid } from "uid";
+import placeholderGIF from "@/public/images/placeholder.gif";
+// import { uid } from "uid";
 import appendImageFromAPI from "./appendImageFromAPI";
 import slugify from "./slugifyString";
 // import strapiAssetsLoader from "./strapiAssetsLoader";
@@ -28,6 +29,8 @@ const parseOptions = {
             // loader={strapiAssetsLoader}
             alt={attribs?.alt || "strapi"}
             layout="fill"
+            placeholder="blur"
+            blurDataURL={placeholderGIF.src}
             // unoptimized={true}
           />
         </Box>
@@ -41,8 +44,7 @@ const parseOptions = {
       name === "h5" ||
       name === "h6"
     ) {
-      console.log(name, children[0]?.data, attribs);
-      attribs.id = slugify(children[0]?.data) + "-" + uid();
+      attribs.id = slugify(children[0]?.data);
     }
     // if (name === "figure") {
     //   return (

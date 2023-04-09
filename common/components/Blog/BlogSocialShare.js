@@ -6,6 +6,10 @@ import Link from "next/link";
 import React from "react";
 
 const BlogSocialShare = ({ data }) => {
+  const [URL, setURL] = React.useState(null);
+  React.useEffect(() => {
+    setURL(window.location.href);
+  }, []);
   return (
     <Box className="blog-container" h={"100%"}>
       <Stack spacing={"sm"}>
@@ -33,7 +37,7 @@ const BlogSocialShare = ({ data }) => {
         >
           <Link
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURI(
-              window.location.href
+              URL
             )}`}
             passHref
           >
@@ -43,7 +47,7 @@ const BlogSocialShare = ({ data }) => {
           </Link>
           <Link
             href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURI(
-              window.location.href
+              URL
             )}&title=${data?.attributes?.siteName || ""}`}
             passHref
           >
@@ -54,7 +58,7 @@ const BlogSocialShare = ({ data }) => {
           <Link
             href={`http://twitter.com/share?text=${
               data?.attributes?.siteName || ""
-            }&url=${encodeURI(window.location.href)}`}
+            }&url=${encodeURI(URL)}`}
             passHref
           >
             <a target="_blank" rel="noopener">
