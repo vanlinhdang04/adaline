@@ -66,7 +66,14 @@ export const fetchNewsList = async (
   params = { populate: "*" },
   options = {}
 ) => {
-  return await fetchAPI("/tin-tucs", params, options);
+  return await fetchAPI(
+    "/tin-tucs",
+    {
+      sort: ["createdAt:desc"],
+      ...params,
+    },
+    options
+  );
 };
 
 export const fetchNews = async (slug, option = {}) => {

@@ -1,31 +1,38 @@
 import { useFetchNewsList } from "@/api/queryFunctions/news";
-import { Box, Stack, Title } from "@mantine/core";
+import HomeTitle from "@/common/components/HomeTitle";
+import NewsCard from "@/pages/tin-tuc/components/NewsCard";
+import { Box, Grid } from "@mantine/core";
 import React from "react";
-import RecentPostItem from "./RecentPostItem";
 
 const RecentPost = () => {
-  const { data: recentPosts } = useFetchNewsList({
+  const { data: recentPosts, isLoading } = useFetchNewsList({
     populate: ["siteName", "siteIcon", "loai_tin_tuc"],
-    sort: ["createdAt"],
+    sort: ["createdAt:desc"],
     pagination: {
       page: 1,
-      pageSize: 3,
+      pageSize: 4,
     },
   });
-  //   console.log("data", data);
+
   return (
     <Box className="widget-box">
-      <Title order={4} mb={30}>
-        <Box component="span" className="line"></Box>
+      <HomeTitle>
+        {/* <Box component="span" className="line"></Box> */}
         Tin mới nhất
-      </Title>
+      </HomeTitle>
 
-      <Stack>
-        {Boolean(recentPosts?.data?.length) &&
-          recentPosts?.data?.map((post) => (
-            <RecentPostItem key={post.id} data={post} />
-          ))}
-      </Stack>
+      {/* <Stack>
+        {(recentPosts?.data || []).map((post) => (
+          <RecentPostItem key={post.id} data={post} />
+        ))}
+      </Stack> */}
+      <Grid gutter={"lg"}>
+        {recentPosts?.data?.map((post) => (
+          <Grid.Col xs={12} sm={6} md={3} key={post?.id}>
+            <NewsCard data={post} isLoading={isLoading} />
+          </Grid.Col>
+        ))}
+      </Grid>
     </Box>
   );
 };

@@ -1,14 +1,15 @@
 import appendImageFromAPI from "@/utils/appendImageFromAPI";
-import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
 import { Box, Skeleton, Text } from "@mantine/core";
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function NewsCard({ data, isLoading = false, pathname = "" }) {
+export default function NewsCard({ data, isLoading = false }) {
   return (
-    <Link href={`${pathname}/${data?.attributes?.siteSlug}`}>
+    <Link
+      href={`${data?.attributes?.loai_tin_tuc?.data?.attributes?.slug}/${data?.attributes?.siteSlug}`}
+    >
       <Box
         pb={"xs"}
         sx={{
@@ -61,7 +62,7 @@ export default function NewsCard({ data, isLoading = false, pathname = "" }) {
         </Box>
         <Box>
           <Skeleton visible={isLoading}>
-            <Text size={"md"} weight={500} color="#001529" lineClamp={4}>
+            <Text size={"md"} weight={500} color="#001529" lineClamp={3}>
               {data?.attributes?.siteName || "title bai viet"}
               {/* {data?.title} */}
             </Text>

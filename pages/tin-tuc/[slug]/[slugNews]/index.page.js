@@ -6,7 +6,9 @@ import {
 import Container from "@/common/MainLayout/Container";
 import BlogDetails from "@/common/components/Blog/BlogDetails";
 import BlogSideBar from "@/common/components/Blog/BlogSideBar";
+import RecentPost from "@/common/components/Blog/RecentPost";
 import DownloadHome from "@/common/components/Home/DownloadHome";
+import Line from "@/common/components/Line";
 import { Box, Grid } from "@mantine/core";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { useRouter } from "next/router";
@@ -25,7 +27,7 @@ const NewsDetail = () => {
   }, []);
 
   return (
-    <Box bg={"#fafafd"} pt={30} className="blog-container">
+    <Box bg={"#fafafd"} pt={30}>
       <Container>
         <Grid gutter={24} pb={"md"}>
           <Grid.Col sm={12} md={8}>
@@ -35,6 +37,10 @@ const NewsDetail = () => {
             <BlogSideBar data={data} />
           </Grid.Col>
         </Grid>
+
+        <RecentPost />
+
+        <Line index={0} />
 
         <DownloadHome />
       </Container>
@@ -93,6 +99,23 @@ export async function getStaticProps({ params }) {
     () => fetchNews(slugNews),
     {
       enabled: !!slugNews,
+    }
+  );
+
+  const paramsRecentPost = {
+    populate: ["siteName", "siteIcon", "loai_tin_tuc"],
+    sort: ["createdAt:desc"],
+    pagination: {
+      page: 1,
+      pageSize: 3,
+    },
+  };
+
+  await queryClient.prefetchQuery(
+    newsKeys.list(paramsRecentPost),
+    () => fetchNewsList(paramsRecentPost),
+    {
+      enabled: !!paramsRecentPost,
     }
   );
 

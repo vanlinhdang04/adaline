@@ -9,7 +9,7 @@ import BlogSocialShare from "./BlogSocialShare";
 import BlogTags from "./BlogTags";
 const BlogDetails = ({ data }) => {
   return (
-    <Box className="blog-details-wrapper">
+    <Box className="blog-details-wrapper blog-container">
       <Box className="blog-content ck-content" mb={30}>
         <Link href={"#"}>
           <a>
@@ -46,7 +46,7 @@ const BlogDetails = ({ data }) => {
         <Box className="blog-container">
           {/* ------ body ------- */}
           <Box className="blog-body">
-            {sanitizeDOMData(data?.attributes?.siteBody)}
+            {sanitizeDOMData(data?.attributes?.siteBody || "")}
           </Box>
 
           <Grid justify="space-between">

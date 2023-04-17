@@ -23,8 +23,8 @@ const BlogToc = () => {
   }, []);
 
   return (
-    <Box className="widget-box ">
-      <Title order={4} mb={30}>
+    <Box className="widget-box js-toc-container">
+      <Title order={4} mb={20}>
         <Box component="span" className="line"></Box>
         Nội dung
       </Title>

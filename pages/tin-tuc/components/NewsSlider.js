@@ -9,7 +9,6 @@ import NewsBanner from "./NewsBanner";
 
 export default function NewsSlider({ data, isLoading = false, pathname }) {
   const settings = {
-    fade: true,
     dots: true,
     // infinite: true,
     speed: 500,

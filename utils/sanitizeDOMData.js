@@ -15,26 +15,31 @@ const parseOptions = {
       return;
     }
     if (name === "img") {
-      return (
-        <Box
-          sx={{
-            position: "relative",
-            aspectRatio: attribs["data-ratio"] || "1",
-            width: "100%",
-            alignSelf: "center",
-          }}
-        >
-          <Image
-            src={appendImageFromAPI(attribs?.src)}
-            // loader={strapiAssetsLoader}
-            alt={attribs?.alt || "strapi"}
-            layout="fill"
-            placeholder="blur"
-            blurDataURL={placeholderGIF.src}
-            // unoptimized={true}
-          />
-        </Box>
+      attribs.srcSet = attribs?.srcSet?.replace(
+        /\/uploads/g,
+        process.env.NEXT_PUBLIC_STRAPI_API_URL + "/uploads"
       );
+      attribs.src = appendImageFromAPI(attribs?.src);
+      // return (
+      //   <Box
+      //     sx={{
+      //       position: "relative",
+      //       aspectRatio: attribs["data-ratio"] || "1",
+      //       width: "100%",
+      //       alignSelf: "center",
+      //     }}
+      //   >
+      //     <Image
+      //       src={appendImageFromAPI(attribs?.src)}
+      //       // loader={strapiAssetsLoader}
+      //       alt={attribs?.alt || "strapi"}
+      //       layout="fill"
+      //       placeholder="blur"
+      //       blurDataURL={placeholderGIF.src}
+      //       // unoptimized={true}
+      //     />
+      //   </Box>
+      // );
     }
     if (
       name === "h1" ||

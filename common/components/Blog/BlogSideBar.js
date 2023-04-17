@@ -5,9 +5,9 @@ import RecentPost from "./RecentPost";
 
 const BlogSideBar = ({ data }) => {
   return (
-    <Stack>
+    <Stack align="stretch" h={"100%"}>
       {data?.attributes?.siteBody && <BlogToc />}
-      <RecentPost />
+      {/* <RecentPost /> */}
     </Stack>
   );
 };

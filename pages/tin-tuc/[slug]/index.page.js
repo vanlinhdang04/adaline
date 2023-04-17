@@ -109,11 +109,7 @@ const NewsTypeDetail = () => {
               },
             })}
           >
-            <NewsSlider
-              data={newsHot?.data}
-              isLoading={isLoading}
-              pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
-            />
+            <NewsSlider data={newsHot?.data} isLoading={isLoading} />
           </Box>
 
           <NewsContainer>
@@ -149,10 +145,7 @@ const NewsTypeDetail = () => {
                   {news?.data?.length
                     ? news?.data?.map((item, k) => (
                         <Grid.Col xs={6} sm={6} md={4} key={k}>
-                          <NewsCard
-                            data={item}
-                            pathname={`/tin-tuc/${newsType?.attributes?.slug}`}
-                          />
+                          <NewsCard data={item} />
                         </Grid.Col>
                         // eslint-disable-next-line no-mixed-spaces-and-tabs
                       ))
@@ -170,7 +163,7 @@ const NewsTypeDetail = () => {
               ) : (
                 <Pagination
                   page={page}
-                  total={news?.meta?.pagination?.total}
+                  total={news?.meta?.pagination?.pageCount}
                   onChange={setPage}
                 />
               )}
