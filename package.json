@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev -p 300",
+    "dev": "next dev",
     "clear-cached": "rm -rf .next",
     "_build": "next build",
     "build": "npm-run-all clear-cached install _build create-sitemap",
