@@ -29,8 +29,8 @@ export default function Home() {
   });
 
   const { data } = useFetchGlobal();
-
-  const defaultSeo = data?.attributes?.defaultSeo;
+  
+  const defaultSeo = data?.data?.attributes?.defaultSeo;
 
   return (
     <Box>
@@ -71,7 +71,7 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps() {
   const queryClient = new QueryClient();
 
   // PAGE INFO

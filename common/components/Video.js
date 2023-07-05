@@ -1,4 +1,4 @@
-import appendImageUrlFromAPI from "@/utils/appendImageUrlFromAPI";
+import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import { Box, Modal } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
@@ -39,7 +39,7 @@ function Video({ video_url, placeholderImageUrl }) {
         })}
       >
         <Image
-          src={appendImageUrlFromAPI({ src: placeholderImageUrl })}
+          src={appendImageFromAPI(placeholderImageUrl)}
           alt="image placeholder for video"
           layout="fill"
           objectFit="cover"

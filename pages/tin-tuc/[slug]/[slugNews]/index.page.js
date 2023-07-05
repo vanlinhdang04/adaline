@@ -21,6 +21,8 @@ const NewsDetail = () => {
   } = useRouter();
 
   const { data } = useFetchNews(slugNews);
+  console.log("data", data);
+
 
   React.useEffect(() => {
     console.log("onLoad");

@@ -14,48 +14,22 @@ import { dehydrate, QueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
 // import DetailTitle from "../tin-tuc/components/DetailTitle";
+import { useFetchAbout } from "@/api/queryFunctions/about";
 import DefaultSEO from "@/common/components/DefaultSEO";
+import imgAbout1 from "@/public/images/about1.avif";
+import appendImageFromAPI from "@/utils/appendImageFromAPI";
 import { useRouter } from "next/router";
 import ListIcon from "public/icons/list-icon.svg";
 import AboutTitle from "./components/AboutTitle";
 
 export default function GioiThieu() {
 	const { locale, asPath } = useRouter();
+    const {data: about} = useFetchAbout();
+
+    console.log("about", about)
 	const { data } = useFetchPageInfo("web-about", {
 		condition: { ngon_ngu: locale },
 	});
-	// console.log("data", data);
-	const contentTitle = getFieldFromFieldId(
-		"content-title",
-		"content_id",
-		data?.text_field
-	);
-	const establish = getFieldFromFieldId(
-		"establish",
-		"content_id",
-		data?.text_field
-	);
-	const client = getFieldFromFieldId("client", "content_id", data?.text_field);
-	const contentBody = getFieldFromFieldId(
-		"content-body",
-		"content_id",
-		data?.text_field
-	);
-	const bannerPlaceholder = getFieldFromFieldId(
-		"banner-placeholder",
-		"picture_id",
-		data?.pictures
-	);
-	const picture = getFieldFromFieldId(
-		"picture_1",
-		"picture_id",
-		data?.pictures
-	);
-	// const iconList = getFieldFromFieldId(
-	// 	"icon-list",
-	// 	"picture_id",
-	// 	data?.pictures
-	// );
 	const suMenh = getFieldFromFieldId("su-menh", "id", data?.add_on_4);
 	const tamNhin = getFieldFromFieldId("tam-nhin", "id", data?.add_on_4);
 	const giaTriCotLoi = getFieldFromFieldId(
@@ -85,7 +59,7 @@ export default function GioiThieu() {
 			title: "Giới thiệu",
 			breadcrumbs: [
 				{ href: "/", title: "Trang chủ" },
-				{ href: "/gioi-thieu", title: "Về ZenOne" },
+				{ href: "/gioi-thieu", title: "Về Adaline" },
 			],
 			thanhLap: "Thành lập",
 			nguoiDung: "Người dùng",
@@ -94,18 +68,18 @@ export default function GioiThieu() {
 			title: "About",
 			breadcrumbs: [
 				{ href: "/", title: "Home" },
-				{ href: "/gioi-thieu", title: "About ZenOne" },
+				{ href: "/gioi-thieu", title: "About Adaline" },
 			],
 			thanhLap: "Establish",
 			nguoiDung: "Users",
 		},
 	};
+	console.log(data?.video_url)
 
 	const seo = {
-		title: data?.seo_title,
-		description: data?.seo_description,
-		picture1: data?.seo_image_1,
-		picture2: data?.seo_image_2,
+		title: about?.data?.attributes?.siteSeo?.metaTitle,
+		description: about?.data?.attributes?.siteSeo?.metaDescription,
+		picture1: appendImageFromAPI(about?.data?.attributes?.siteSeo?.shareImage?.data?.attributes?.url),
 		url: asPath,
 	};
 
@@ -175,7 +149,7 @@ export default function GioiThieu() {
 										},
 									})}
 								>
-									{sanitizeDOMData(contentTitle?.content_editor)}
+									Về Adaline
 								</Title>
 								{/* <AboutTitle>
 									{sanitizeDOMData(contentTitle?.content_editor)}
@@ -186,7 +160,7 @@ export default function GioiThieu() {
 									sx={() => ({ fontSize: 16 })}
 									className="webview"
 								>
-									{sanitizeDOMData(contentBody?.content_editor)}
+									{sanitizeDOMData(about?.data?.attributes?.content)}
 								</Text>
 								<Group mt={32} spacing={48}>
 									<Stack spacing={8}>
@@ -198,7 +172,7 @@ export default function GioiThieu() {
 												lineHeight: "1",
 											})}
 										>
-											{establish?.content}
+											{about?.data?.attributes?.foundedYear}
 										</Text>
 										<Text weight={400} size={"xs"} color="#414141">
 											{label?.[locale]?.thanhLap}
@@ -213,7 +187,7 @@ export default function GioiThieu() {
 												lineHeight: "1",
 											})}
 										>
-											{client?.content}
+											{about?.data?.attributes?.users}
 										</Text>
 										<Text weight={400} size={"xs"} color="#414141">
 											{label?.[locale]?.nguoiDung}
@@ -232,7 +206,7 @@ export default function GioiThieu() {
 							>
 								<Video
 									video_url={data?.video_url}
-									placeholderImageUrl={bannerPlaceholder?.picture_url}
+									placeholderImageUrl={about?.data?.attributes?.video?.videoThumbnail?.data?.attributes?.url}
 								/>
 							</Box>
 						</Grid.Col>
@@ -259,8 +233,8 @@ export default function GioiThieu() {
 							}}
 						>
 							<Image
-								src={appendImageUrlFromAPI({ src: picture?.picture_url })}
-								alt={picture?.id}
+							src={imgAbout1}
+								alt={"about"}
 								layout="fill"
 								objectFit="cover"
 								priority
@@ -294,7 +268,7 @@ export default function GioiThieu() {
 									},
 								})}
 							>
-								<AboutTitle>{suMenh?.label}</AboutTitle>
+								<AboutTitle>Sứ mệnh</AboutTitle>
 								<List
 									icon={
 										<Box sx={{ width: 23, height: 23 }}>
@@ -326,6 +300,7 @@ export default function GioiThieu() {
 										itemWrapper: {
 											// alignItems: "center !important",
 										},
+
 										itemIcon: {
 											marginTop: "4px",
 										},
@@ -338,7 +313,7 @@ export default function GioiThieu() {
 								</List>
 							</Box>
 							<Box>
-								<AboutTitle>{tamNhin?.label}</AboutTitle>
+								<AboutTitle>Tầm nhìn</AboutTitle>
 								{tamNhin?.text_field?.map((item, k) => (
 									<Text
 										key={k}
